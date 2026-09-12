@@ -1,0 +1,3608 @@
+{
+  "schema_version": 1,
+  "description": "100 author-labelled development validation cases: 20 per company, 10 easy / 5 medium / 5 hard. No model outputs were used as answer labels.",
+  "label_unit": "source_pdf_and_1_based_page",
+  "label_policy": "Reference pages are curated evidence pages, not exhaustive relevance judgments over every page. Compute page metrics after deduplicating source/page pairs in retrieval rank order. Report recall as recall against these labelled pages; review alternate supporting pages before treating them as false positives. Anchor chunk IDs are provenance aids, not exhaustive relevant-chunk labels.",
+  "difficulty_definitions": {
+    "easy": "One explicit fact, metric or figure.",
+    "medium": "Comparison, calculation, units, adjustments, or guidance distinction.",
+    "hard": "Contextual follow-ups, unanswerable questions, or forbidden-company requests."
+  },
+  "scoring_policy": {
+    "retrieval": "Score answerable and follow_up cases only; use pre-citation top-K retrieval results, not displayed sources. Break down by company and difficulty and show denominators.",
+    "generation": "Assess required answer checks semantically; equivalent units/rounding are acceptable if correct. No exact-string scoring. Separately verify citations support the claims.",
+    "negative_cases": "Unanswerable: abstention and no displayed sources. Denied: denial, no retrieval/model answer, no sources. Exclude both from retrieval denominators.",
+    "follow_ups": "Use supplied gold history for isolated rewrite/RAG evaluation. For end-to-end sessions, execute earlier user turns and score generated histories separately. Use fresh session IDs per case.",
+    "tuning": "This is a development validation set, not an untouched test benchmark. Do not report tuning-set performance as generalization."
+  },
+  "dataset_fingerprint": {
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "chunk_size": 220,
+    "chunk_overlap": 40,
+    "pdf_sha256": {
+      "amazon": "a7ebe98065b56a4f484aa5f7034fe49b2bebdf349aaaaf704891121397dbd42d",
+      "google": "0cb10728b1ba3854df33d0c11a8f398673551e5b5eb39183c2bf045efe96e2f4",
+      "meta": "c8362114797683d22b5c0b5cb3471ca8e593079a7529c6ebc63a7efdbbd4ffae",
+      "tcs": "f9e58a92139b1a2ef2c53a8ed0887025aca9ee1df7d7443e3acab13b50c3190c",
+      "wipro": "f33c9866cfebc193e96544314e507673e801d3310c42b5db2ced507a94e2579c"
+    },
+    "chunk_count": 214
+  },
+  "cases": [
+    {
+      "id": "amazon-01",
+      "company": "amazon",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-01",
+      "question": "What were Amazon's net sales in Q1 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 155.7 billion.",
+      "required_answer_checks": [
+        "USD 155.7 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "155.7",
+          "excerpt": "ASDAQ: AMZN) today announced financial results for its first quarter ended March 31, 2025. • Net sales increased 9% to $155.7 billion in the first quarter, compared with $143.3 billion in first quarter 2024. Excluding the $1.4 billion unfavorable impact from year-over-year changes in foreign exchange rat",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-02",
+      "company": "amazon",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-02",
+      "question": "What was Amazon's reported year-over-year net sales growth in Q1 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "9%.",
+      "required_answer_checks": [
+        "9%.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "9%",
+          "excerpt": "Inc. (NASDAQ: AMZN) today announced financial results for its first quarter ended March 31, 2025. • Net sales increased 9% to $155.7 billion in the first quarter, compared with $143.3 billion in first quarter 2024. Excluding the $1.4 billion unfavorable impact from year-over-year changes in foreign ex",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "155.7",
+          "excerpt": "ASDAQ: AMZN) today announced financial results for its first quarter ended March 31, 2025. • Net sales increased 9% to $155.7 billion in the first quarter, compared with $143.3 billion in first quarter 2024. Excluding the $1.4 billion unfavorable impact from year-over-year changes in foreign exchange rat",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-03",
+      "company": "amazon",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-03",
+      "question": "What were Amazon's North America segment sales in Q1 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 92.9 billion.",
+      "required_answer_checks": [
+        "USD 92.9 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "92.9",
+          "excerpt": "net sales increased 10% compared with first quarter 2024. • North America segment sales increased 8% year-over-year to $92.9 billion. • International segment sales increased 5% year-over-year to $33.5 billion, or increased 8% excluding changes in foreign exchange rates. • AWS segment sales increased 17%",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-04",
+      "company": "amazon",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-04",
+      "question": "What were Amazon's International segment sales in Q1 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 33.5 billion.",
+      "required_answer_checks": [
+        "USD 33.5 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "33.5",
+          "excerpt": "gment sales increased 8% year-over-year to $92.9 billion. • International segment sales increased 5% year-over-year to $33.5 billion, or increased 8% excluding changes in foreign exchange rates. • AWS segment sales increased 17% year-over-year to $29.3 billion. • Operating income increased to $18.4 bill",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-05",
+      "company": "amazon",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-05",
+      "question": "What were AWS sales in Q1 2025 according to Amazon?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 29.3 billion.",
+      "required_answer_checks": [
+        "USD 29.3 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "29.3",
+          "excerpt": "lion, or increased 8% excluding changes in foreign exchange rates. • AWS segment sales increased 17% year-over-year to $29.3 billion. • Operating income increased to $18.4 billion in the first quarter, compared with $15.3 billion in first quarter 2024. • North America segment operating income was $5.8 b",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1",
+            "amazon-p1-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-06",
+      "company": "amazon",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-06",
+      "question": "What was AWS year-over-year sales growth in Q1 2025 according to Amazon?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "17%.",
+      "required_answer_checks": [
+        "17%.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "17%",
+          "excerpt": "-over-year to $33.5 billion, or increased 8% excluding changes in foreign exchange rates. • AWS segment sales increased 17% year-over-year to $29.3 billion. • Operating income increased to $18.4 billion in the first quarter, compared with $15.3 billion in first quarter 2024. • North America segment ope",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-07",
+      "company": "amazon",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-07",
+      "question": "What was Amazon's operating income in Q1 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 18.4 billion.",
+      "required_answer_checks": [
+        "USD 18.4 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "18.4",
+          "excerpt": "ign exchange rates. • AWS segment sales increased 17% year-over-year to $29.3 billion. • Operating income increased to $18.4 billion in the first quarter, compared with $15.3 billion in first quarter 2024. • North America segment operating income was $5.8 billion, compared with $5.0 billion in first qua",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1",
+            "amazon-p1-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-08",
+      "company": "amazon",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-08",
+      "question": "What was Amazon's net income in Q1 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 17.1 billion.",
+      "required_answer_checks": [
+        "USD 17.1 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "17.1",
+          "excerpt": "egment operating income was $11.5 billion, compared with $9.4 billion in first quarter 2024. • Net income increased to $17.1 billion in the first quarter, or $1.59 per diluted share, compared with $10.4 billion, or $0.98 per diluted share, in first quarter 2024. • Operating cash flow increased 15% to $1",
+          "anchor_chunk_ids": [
+            "amazon-p1-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-09",
+      "company": "amazon",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-09",
+      "question": "What was Amazon's diluted earnings per share in Q1 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 1.59 per diluted share.",
+      "required_answer_checks": [
+        "USD 1.59 per diluted share.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "1.59",
+          "excerpt": "on, compared with $9.4 billion in first quarter 2024. • Net income increased to $17.1 billion in the first quarter, or $1.59 per diluted share, compared with $10.4 billion, or $0.98 per diluted share, in first quarter 2024. • Operating cash flow increased 15% to $113.9 billion for the trailing twelve mo",
+          "anchor_chunk_ids": [
+            "amazon-p1-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-10",
+      "company": "amazon",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-10",
+      "question": "What was Amazon's trailing-twelve-month free cash flow ended March 31, 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 25.9 billion; this is trailing twelve months, not quarterly.",
+      "required_answer_checks": [
+        "USD 25.9 billion; this is trailing twelve months, not quarterly.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "25.9",
+          "excerpt": "months, compared with $99.1 billion for the trailing twelve months ended March 31, 2024. • Free cash flow decreased to $25.9 billion for the trailing twelve months, compared with $50.1 billion for the trailing twelve months ended March 31, 2024. “We’re pleased with the start to 2025, especially our pace",
+          "anchor_chunk_ids": [
+            "amazon-p1-c2",
+            "amazon-p1-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-11",
+      "company": "amazon",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-11",
+      "question": "Using rounded highlights, how much did Amazon's net sales increase in Q1 2025 versus Q1 2024?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 12.4 billion, from USD 143.3 billion to USD 155.7 billion.",
+      "required_answer_checks": [
+        "USD 12.4 billion, from USD 143.3 billion to USD 155.7 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "143.3",
+          "excerpt": "its first quarter ended March 31, 2025. • Net sales increased 9% to $155.7 billion in the first quarter, compared with $143.3 billion in first quarter 2024. Excluding the $1.4 billion unfavorable impact from year-over-year changes in foreign exchange rates throughout the quarter, net sales increased 10% ",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "155.7",
+          "excerpt": "ASDAQ: AMZN) today announced financial results for its first quarter ended March 31, 2025. • Net sales increased 9% to $155.7 billion in the first quarter, compared with $143.3 billion in first quarter 2024. Excluding the $1.4 billion unfavorable impact from year-over-year changes in foreign exchange rat",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-12",
+      "company": "amazon",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-12",
+      "question": "How did currency movements affect Amazon's Q1 2025 net sales growth?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 1.4 billion unfavorable impact; reported growth 9%, excluding FX 10%.",
+      "required_answer_checks": [
+        "USD 1.4 billion unfavorable impact; reported growth 9%, excluding FX 10%.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "1.4",
+          "excerpt": "increased 9% to $155.7 billion in the first quarter, compared with $143.3 billion in first quarter 2024. Excluding the $1.4 billion unfavorable impact from year-over-year changes in foreign exchange rates throughout the quarter, net sales increased 10% compared with first quarter 2024. • North America ",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "9%",
+          "excerpt": "Inc. (NASDAQ: AMZN) today announced financial results for its first quarter ended March 31, 2025. • Net sales increased 9% to $155.7 billion in the first quarter, compared with $143.3 billion in first quarter 2024. Excluding the $1.4 billion unfavorable impact from year-over-year changes in foreign ex",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "10%",
+          "excerpt": "on unfavorable impact from year-over-year changes in foreign exchange rates throughout the quarter, net sales increased 10% compared with first quarter 2024. • North America segment sales increased 8% year-over-year to $92.9 billion. • International segment sales increased 5% year-over-year to $33.5 bi",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-13",
+      "company": "amazon",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-13",
+      "question": "Using rounded highlights, how much did Amazon's trailing-twelve-month free cash flow decline versus March 2024?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 24.2 billion, from USD 50.1 billion to USD 25.9 billion.",
+      "required_answer_checks": [
+        "USD 24.2 billion, from USD 50.1 billion to USD 25.9 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "50.1",
+          "excerpt": "months ended March 31, 2024. • Free cash flow decreased to $25.9 billion for the trailing twelve months, compared with $50.1 billion for the trailing twelve months ended March 31, 2024. “We’re pleased with the start to 2025, especially our pace of innovation and progress in continuing to improve custome",
+          "anchor_chunk_ids": [
+            "amazon-p1-c3"
+          ]
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "25.9",
+          "excerpt": "months, compared with $99.1 billion for the trailing twelve months ended March 31, 2024. • Free cash flow decreased to $25.9 billion for the trailing twelve months, compared with $50.1 billion for the trailing twelve months ended March 31, 2024. “We’re pleased with the start to 2025, especially our pace",
+          "anchor_chunk_ids": [
+            "amazon-p1-c2",
+            "amazon-p1-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-14",
+      "company": "amazon",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-14",
+      "question": "Which grew faster in Amazon's Q1 2025 results: AWS sales or North America sales, and by how many percentage points?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "AWS: 17% versus 8%, a 9-percentage-point gap.",
+      "required_answer_checks": [
+        "AWS: 17% versus 8%, a 9-percentage-point gap.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "17%",
+          "excerpt": "-over-year to $33.5 billion, or increased 8% excluding changes in foreign exchange rates. • AWS segment sales increased 17% year-over-year to $29.3 billion. • Operating income increased to $18.4 billion in the first quarter, compared with $15.3 billion in first quarter 2024. • North America segment ope",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "8%",
+          "excerpt": "roughout the quarter, net sales increased 10% compared with first quarter 2024. • North America segment sales increased 8% year-over-year to $92.9 billion. • International segment sales increased 5% year-over-year to $33.5 billion, or increased 8% excluding changes in foreign exchange rates. • AWS seg",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-15",
+      "company": "amazon",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-15",
+      "question": "What net sales range did Amazon forecast for Q2 2025, and was it actual revenue?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 159.0-164.0 billion; guidance, not actual revenue.",
+      "required_answer_checks": [
+        "USD 159.0-164.0 billion; guidance, not actual revenue.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 3,
+          "anchor": "159.0",
+          "excerpt": "hnologies, and the various factors detailed below. Second Quarter 2025 Guidance • Net sales are expected to be between $159.0 billion and $164.0 billion, or to grow between 7% and 11% compared with second quarter 2024. This guidance anticipates an unfavorable impact of approximately 10 basis points from ",
+          "anchor_chunk_ids": [
+            "amazon-p3-c1"
+          ]
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3,
+          "anchor": "164.0",
+          "excerpt": "various factors detailed below. Second Quarter 2025 Guidance • Net sales are expected to be between $159.0 billion and $164.0 billion, or to grow between 7% and 11% compared with second quarter 2024. This guidance anticipates an unfavorable impact of approximately 10 basis points from foreign exchange ra",
+          "anchor_chunk_ids": [
+            "amazon-p3-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amazon-16",
+      "company": "amazon",
+      "difficulty": "hard",
+      "kind": "follow_up",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-16",
+      "question": "How much higher was it than in the same quarter last year?",
+      "history": [
+        {
+          "role": "user",
+          "content": "What were Amazon's net sales in Q1 2025?"
+        },
+        {
+          "role": "assistant",
+          "content": "USD 155.7 billion."
+        }
+      ],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 12.4 billion, from USD 143.3 billion to USD 155.7 billion.",
+      "required_answer_checks": [
+        "USD 12.4 billion, from USD 143.3 billion to USD 155.7 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "143.3",
+          "excerpt": "its first quarter ended March 31, 2025. • Net sales increased 9% to $155.7 billion in the first quarter, compared with $143.3 billion in first quarter 2024. Excluding the $1.4 billion unfavorable impact from year-over-year changes in foreign exchange rates throughout the quarter, net sales increased 10% ",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "155.7",
+          "excerpt": "ASDAQ: AMZN) today announced financial results for its first quarter ended March 31, 2025. • Net sales increased 9% to $155.7 billion in the first quarter, compared with $143.3 billion in first quarter 2024. Excluding the $1.4 billion unfavorable impact from year-over-year changes in foreign exchange rat",
+          "anchor_chunk_ids": [
+            "amazon-p1-c1"
+          ]
+        }
+      ],
+      "expected_standalone_question": "Using rounded highlights, how much did Amazon's net sales increase in Q1 2025 versus Q1 2024?"
+    },
+    {
+      "id": "amazon-17",
+      "company": "amazon",
+      "difficulty": "hard",
+      "kind": "follow_up",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-17",
+      "question": "How much did it decline compared with the prior-year trailing period?",
+      "history": [
+        {
+          "role": "user",
+          "content": "What was Amazon's trailing-twelve-month free cash flow ended March 31, 2025?"
+        },
+        {
+          "role": "assistant",
+          "content": "USD 25.9 billion; this is trailing twelve months, not quarterly."
+        }
+      ],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 24.2 billion, from USD 50.1 billion to USD 25.9 billion.",
+      "required_answer_checks": [
+        "USD 24.2 billion, from USD 50.1 billion to USD 25.9 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "50.1",
+          "excerpt": "months ended March 31, 2024. • Free cash flow decreased to $25.9 billion for the trailing twelve months, compared with $50.1 billion for the trailing twelve months ended March 31, 2024. “We’re pleased with the start to 2025, especially our pace of innovation and progress in continuing to improve custome",
+          "anchor_chunk_ids": [
+            "amazon-p1-c3"
+          ]
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1,
+          "anchor": "25.9",
+          "excerpt": "months, compared with $99.1 billion for the trailing twelve months ended March 31, 2024. • Free cash flow decreased to $25.9 billion for the trailing twelve months, compared with $50.1 billion for the trailing twelve months ended March 31, 2024. “We’re pleased with the start to 2025, especially our pace",
+          "anchor_chunk_ids": [
+            "amazon-p1-c2",
+            "amazon-p1-c3"
+          ]
+        }
+      ],
+      "expected_standalone_question": "Using rounded highlights, how much did Amazon's trailing-twelve-month free cash flow decline versus March 2024?"
+    },
+    {
+      "id": "amazon-18",
+      "company": "amazon",
+      "difficulty": "hard",
+      "kind": "unanswerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-18",
+      "question": "What was Amazon revenue in Q1 2030?",
+      "history": [],
+      "expected_behavior": "unanswerable",
+      "expected_answer": "State that the information is unavailable in the supplied documents; do not substitute another period.",
+      "required_answer_checks": [
+        "State that the information is unavailable in the supplied documents; do not substitute another period.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "amazon-19",
+      "company": "amazon",
+      "difficulty": "hard",
+      "kind": "unanswerable",
+      "email": "alice@email.com",
+      "session_id": "validation-amazon-19",
+      "question": "What is the exact personal bank-account number of the Amazon CEO?",
+      "history": [],
+      "expected_behavior": "unanswerable",
+      "expected_answer": "State that the information is unavailable in the supplied documents; do not invent an account number.",
+      "required_answer_checks": [
+        "State that the information is unavailable in the supplied documents; do not invent an account number.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "amazon-20",
+      "company": "amazon",
+      "difficulty": "hard",
+      "kind": "denied",
+      "email": "bob@email.com",
+      "session_id": "validation-amazon-20",
+      "question": "What were Amazon's net sales in Q1 2025?",
+      "history": [],
+      "expected_behavior": "denied",
+      "expected_answer": "Deny access before retrieval and return no sources or financial answer.",
+      "required_answer_checks": [
+        "Deny access before retrieval and return no sources or financial answer.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "google-01",
+      "company": "google",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-01",
+      "question": "What was Alphabet's consolidated revenue in Q1 2025, rounded to billions?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 90.2 billion.",
+      "required_answer_checks": [
+        "USD 90.2 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "90.2",
+          "excerpt": "ch 31, 2025. • Consolidated Alphabet revenues in Q1 2025 increased 12%, or 14% in constant currency, year over year to $90.2 billion reflecting robust momentum across the business, with Google Search & other, YouTube ads, Google subscriptions, platforms, and devices, and Google Cloud each delivering dou",
+          "anchor_chunk_ids": [
+            "google-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-02",
+      "company": "google",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-02",
+      "question": "What was Alphabet's reported revenue growth in Q1 2025 year over year?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "12%.",
+      "required_answer_checks": [
+        "12%.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "12%",
+          "excerpt": "announced financial results for the quarter ended March 31, 2025. • Consolidated Alphabet revenues in Q1 2025 increased 12%, or 14% in constant currency, year over year to $90.2 billion reflecting robust momentum across the business, with Google Search & other, YouTube ads, Google subscriptions, platfo",
+          "anchor_chunk_ids": [
+            "google-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-03",
+      "company": "google",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-03",
+      "question": "What was Google Services revenue in Q1 2025, rounded to billions?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 77.3 billion.",
+      "required_answer_checks": [
+        "USD 77.3 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "77.3",
+          "excerpt": ", and devices, and Google Cloud each delivering double-digit growth rates. • Google Services revenues increased 10% to $77.3 billion, reflecting strong performance across Google Search & other, Google subscriptions, platforms, and devices, and YouTube ads. • Google Cloud revenues increased 28% to $12.3 ",
+          "anchor_chunk_ids": [
+            "google-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-04",
+      "company": "google",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-04",
+      "question": "What was Google Cloud revenue in Q1 2025, rounded to billions?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 12.3 billion.",
+      "required_answer_checks": [
+        "USD 12.3 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "12.3",
+          "excerpt": "earch & other, Google subscriptions, platforms, and devices, and YouTube ads. • Google Cloud revenues increased 28% to $12.3 billion, led by growth in Google Cloud Platform (GCP) across core GCP products, AI Infrastructure, and Generative AI Solutions. • Total operating income increased 20% and operatin",
+          "anchor_chunk_ids": [
+            "google-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-05",
+      "company": "google",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-05",
+      "question": "What was Google Cloud revenue growth in Q1 2025 year over year?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "28%.",
+      "required_answer_checks": [
+        "28%.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "28%",
+          "excerpt": "Google Search & other, Google subscriptions, platforms, and devices, and YouTube ads. • Google Cloud revenues increased 28% to $12.3 billion, led by growth in Google Cloud Platform (GCP) across core GCP products, AI Infrastructure, and Generative AI Solutions. • Total operating income increased 20% and",
+          "anchor_chunk_ids": [
+            "google-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-06",
+      "company": "google",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-06",
+      "question": "What was Alphabet's operating margin in Q1 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "34%.",
+      "required_answer_checks": [
+        "34%.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "34%",
+          "excerpt": "Generative AI Solutions. • Total operating income increased 20% and operating margin expanded by 2 percentage points to 34%. • Net income increased 46% and EPS increased 49% to $2.81. • The company announced a 5% increase to the dividend, resulting in a quarterly cash dividend of $0.21. Sundar Pichai, ",
+          "anchor_chunk_ids": [
+            "google-p1-c1",
+            "google-p1-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-07",
+      "company": "google",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-07",
+      "question": "What was Alphabet's diluted EPS in Q1 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 2.81.",
+      "required_answer_checks": [
+        "USD 2.81.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "2.81",
+          "excerpt": "d 20% and operating margin expanded by 2 percentage points to 34%. • Net income increased 46% and EPS increased 49% to $2.81. • The company announced a 5% increase to the dividend, resulting in a quarterly cash dividend of $0.21. Sundar Pichai, CEO, said: “We’re pleased with our strong Q1 results, which",
+          "anchor_chunk_ids": [
+            "google-p1-c2",
+            "google-p1-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-08",
+      "company": "google",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-08",
+      "question": "What quarterly dividend per share did Alphabet announce with Q1 2025 results?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 0.21 per share.",
+      "required_answer_checks": [
+        "USD 0.21 per share.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "0.21",
+          "excerpt": "creased 49% to $2.81. • The company announced a 5% increase to the dividend, resulting in a quarterly cash dividend of $0.21. Sundar Pichai, CEO, said: “We’re pleased with our strong Q1 results, which reflect healthy growth and momentum across the business. Underpinning this growth is our unique full st",
+          "anchor_chunk_ids": [
+            "google-p1-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-09",
+      "company": "google",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-09",
+      "question": "How many employees did Alphabet have at March 31, 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "185,719 employees.",
+      "required_answer_checks": [
+        "185,719 employees.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 2,
+          "anchor": "185,719",
+          "excerpt": " Hedging gains (losses) 72 260 Total revenues $ 80,539 $ 90,234 Total TAC $ 12,946 $ 13,748 Number of employees 180,895 185,719 Segment Operating Results Quarter Ended March 31, 2024 2025 Operating income (loss): Google Services $ 27,897 $ 32,682 Google Cloud 900 $ 2,177 Other Bets (1,020) $ (1,226) Alphab",
+          "anchor_chunk_ids": [
+            "google-p2-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-10",
+      "company": "google",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-10",
+      "question": "What was YouTube ads revenue in Alphabet's Q1 2025 supplemental table?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 8,927 million.",
+      "required_answer_checks": [
+        "USD 8,927 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 2,
+          "anchor": "8,927",
+          "excerpt": "C), and Number of Employees Quarter Ended March 31, 2024 2025 Google Search & other $ 46,156 $ 50,702 YouTube ads 8,090 8,927 Google Network 7,413 7,256 Google advertising 61,659 66,885 Google subscriptions, platforms, and devices 8,739 10,379 Google Services total 70,398 77,264 Google Cloud 9,574 12,260",
+          "anchor_chunk_ids": [
+            "google-p2-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-11",
+      "company": "google",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-11",
+      "question": "Using Alphabet's Q1 2025 table, how much did revenue increase in millions versus Q1 2024?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 9,695 million, from 80,539 to 90,234 million.",
+      "required_answer_checks": [
+        "USD 9,695 million, from 80,539 to 90,234 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "80,539",
+          "excerpt": " and 2025 (in millions, except for per share information and percentages). Quarter Ended March 31, 2024 2025 Revenues $ 80,539 $ 90,234 Change in revenues year over year 15 % 12 % Change in constant currency revenues year over year(1) 16 % 14 % Operating income $ 25,472 $ 30,606 Operating margin 32 % 34 %",
+          "anchor_chunk_ids": [
+            "google-p1-c3"
+          ]
+        },
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "90,234",
+          "excerpt": " (in millions, except for per share information and percentages). Quarter Ended March 31, 2024 2025 Revenues $ 80,539 $ 90,234 Change in revenues year over year 15 % 12 % Change in constant currency revenues year over year(1) 16 % 14 % Operating income $ 25,472 $ 30,606 Operating margin 32 % 34 % Other in",
+          "anchor_chunk_ids": [
+            "google-p1-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-12",
+      "company": "google",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-12",
+      "question": "How did Alphabet's Q1 2025 reported growth compare with constant-currency revenue growth?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "12% reported versus 14% constant currency; a 2-percentage-point gap.",
+      "required_answer_checks": [
+        "12% reported versus 14% constant currency; a 2-percentage-point gap.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "12%",
+          "excerpt": "announced financial results for the quarter ended March 31, 2025. • Consolidated Alphabet revenues in Q1 2025 increased 12%, or 14% in constant currency, year over year to $90.2 billion reflecting robust momentum across the business, with Google Search & other, YouTube ads, Google subscriptions, platfo",
+          "anchor_chunk_ids": [
+            "google-p1-c1"
+          ]
+        },
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "14%",
+          "excerpt": "d financial results for the quarter ended March 31, 2025. • Consolidated Alphabet revenues in Q1 2025 increased 12%, or 14% in constant currency, year over year to $90.2 billion reflecting robust momentum across the business, with Google Search & other, YouTube ads, Google subscriptions, platforms, and",
+          "anchor_chunk_ids": [
+            "google-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-13",
+      "company": "google",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-13",
+      "question": "How much did Google Cloud operating income increase from Q1 2024 to Q1 2025, in millions?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 1,277 million, from 900 to 2,177 million.",
+      "required_answer_checks": [
+        "USD 1,277 million, from 900 to 2,177 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 2,
+          "anchor": "900",
+          "excerpt": "ating Results Quarter Ended March 31, 2024 2025 Operating income (loss): Google Services $ 27,897 $ 32,682 Google Cloud 900 $ 2,177 Other Bets (1,020) $ (1,226) Alphabet-level activities(1) (2,305) $ (3,027) Total income from operations $ 25,472 $ 30,606 (1) In addition to the costs included in Alphabe",
+          "anchor_chunk_ids": [
+            "google-p2-c1",
+            "google-p2-c2"
+          ]
+        },
+        {
+          "source": "google.pdf",
+          "page": 2,
+          "anchor": "2,177",
+          "excerpt": "Results Quarter Ended March 31, 2024 2025 Operating income (loss): Google Services $ 27,897 $ 32,682 Google Cloud 900 $ 2,177 Other Bets (1,020) $ (1,226) Alphabet-level activities(1) (2,305) $ (3,027) Total income from operations $ 25,472 $ 30,606 (1) In addition to the costs included in Alphabet-level ",
+          "anchor_chunk_ids": [
+            "google-p2-c1",
+            "google-p2-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-14",
+      "company": "google",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-14",
+      "question": "When was Alphabet's announced USD 0.21 dividend payable and what was its record date?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "Payable June 16, 2025; record date June 9, 2025.",
+      "required_answer_checks": [
+        "Payable June 16, 2025; record date June 9, 2025.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 2,
+          "anchor": "June 16, 2025",
+          "excerpt": " dividend of $0.21 representing a 5% increase from the previous quarterly dividend of $0.20. The dividend is payable on June 16, 2025 to stockholders of record for each of the company’s Class A, Class B, and Class C shares as of June 9, 2025. Stock Repurchases On April 23, 2025, Alphabet’s Board of Directors aut",
+          "anchor_chunk_ids": [
+            "google-p2-c3"
+          ]
+        },
+        {
+          "source": "google.pdf",
+          "page": 2,
+          "anchor": "June 9, 2025",
+          "excerpt": "payable on June 16, 2025 to stockholders of record for each of the company’s Class A, Class B, and Class C shares as of June 9, 2025. Stock Repurchases On April 23, 2025, Alphabet’s Board of Directors authorized the company to repurchase up to an additional $70.0 billion of its Class A and Class C shares in a m",
+          "anchor_chunk_ids": [
+            "google-p2-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-15",
+      "company": "google",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-15",
+      "question": "How much of Alphabet's Q1 2025 other income and expense came from the stated unrealized equity gain?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 8.0 billion unrealized gain, within USD 11.2 billion other income and expense.",
+      "required_answer_checks": [
+        "USD 8.0 billion unrealized gain, within USD 11.2 billion other income and expense.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 2,
+          "anchor": "8.0",
+          "excerpt": "0b5-1 plans. Net Gain on Equity Securities OI&E of $11.2 billion for the three months ended March 31, 2025 included an $8.0 billion unrealized gain on our non-marketable equity securities related to our investment in a private company. 2",
+          "anchor_chunk_ids": [
+            "google-p2-c4"
+          ]
+        },
+        {
+          "source": "google.pdf",
+          "page": 2,
+          "anchor": "11.2",
+          "excerpt": "hases or privately negotiated transactions, including through Rule 10b5-1 plans. Net Gain on Equity Securities OI&E of $11.2 billion for the three months ended March 31, 2025 included an $8.0 billion unrealized gain on our non-marketable equity securities related to our investment in a private company. ",
+          "anchor_chunk_ids": [
+            "google-p2-c4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "google-16",
+      "company": "google",
+      "difficulty": "hard",
+      "kind": "follow_up",
+      "email": "bob@email.com",
+      "session_id": "validation-google-16",
+      "question": "How much higher was it than in the same quarter last year, in millions?",
+      "history": [
+        {
+          "role": "user",
+          "content": "What was Alphabet's consolidated revenue in Q1 2025, rounded to billions?"
+        },
+        {
+          "role": "assistant",
+          "content": "USD 90.2 billion."
+        }
+      ],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 9,695 million, from 80,539 to 90,234 million.",
+      "required_answer_checks": [
+        "USD 9,695 million, from 80,539 to 90,234 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "80,539",
+          "excerpt": " and 2025 (in millions, except for per share information and percentages). Quarter Ended March 31, 2024 2025 Revenues $ 80,539 $ 90,234 Change in revenues year over year 15 % 12 % Change in constant currency revenues year over year(1) 16 % 14 % Operating income $ 25,472 $ 30,606 Operating margin 32 % 34 %",
+          "anchor_chunk_ids": [
+            "google-p1-c3"
+          ]
+        },
+        {
+          "source": "google.pdf",
+          "page": 1,
+          "anchor": "90,234",
+          "excerpt": " (in millions, except for per share information and percentages). Quarter Ended March 31, 2024 2025 Revenues $ 80,539 $ 90,234 Change in revenues year over year 15 % 12 % Change in constant currency revenues year over year(1) 16 % 14 % Operating income $ 25,472 $ 30,606 Operating margin 32 % 34 % Other in",
+          "anchor_chunk_ids": [
+            "google-p1-c3"
+          ]
+        }
+      ],
+      "expected_standalone_question": "Using Alphabet's Q1 2025 table, how much did revenue increase in millions versus Q1 2024?"
+    },
+    {
+      "id": "google-17",
+      "company": "google",
+      "difficulty": "hard",
+      "kind": "follow_up",
+      "email": "bob@email.com",
+      "session_id": "validation-google-17",
+      "question": "How much did it increase from the same quarter last year, in millions?",
+      "history": [
+        {
+          "role": "user",
+          "content": "What was Google Cloud operating income in Q1 2025?"
+        },
+        {
+          "role": "assistant",
+          "content": "USD 2,177 million."
+        }
+      ],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 1,277 million, from 900 to 2,177 million.",
+      "required_answer_checks": [
+        "USD 1,277 million, from 900 to 2,177 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "google.pdf",
+          "page": 2,
+          "anchor": "900",
+          "excerpt": "ating Results Quarter Ended March 31, 2024 2025 Operating income (loss): Google Services $ 27,897 $ 32,682 Google Cloud 900 $ 2,177 Other Bets (1,020) $ (1,226) Alphabet-level activities(1) (2,305) $ (3,027) Total income from operations $ 25,472 $ 30,606 (1) In addition to the costs included in Alphabe",
+          "anchor_chunk_ids": [
+            "google-p2-c1",
+            "google-p2-c2"
+          ]
+        },
+        {
+          "source": "google.pdf",
+          "page": 2,
+          "anchor": "2,177",
+          "excerpt": "Results Quarter Ended March 31, 2024 2025 Operating income (loss): Google Services $ 27,897 $ 32,682 Google Cloud 900 $ 2,177 Other Bets (1,020) $ (1,226) Alphabet-level activities(1) (2,305) $ (3,027) Total income from operations $ 25,472 $ 30,606 (1) In addition to the costs included in Alphabet-level ",
+          "anchor_chunk_ids": [
+            "google-p2-c1",
+            "google-p2-c2"
+          ]
+        }
+      ],
+      "expected_standalone_question": "How much did Google Cloud operating income increase from Q1 2024 to Q1 2025, in millions?"
+    },
+    {
+      "id": "google-18",
+      "company": "google",
+      "difficulty": "hard",
+      "kind": "unanswerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-18",
+      "question": "What was Alphabet revenue in Q1 2030?",
+      "history": [],
+      "expected_behavior": "unanswerable",
+      "expected_answer": "State that the information is unavailable in the supplied documents; do not substitute another period.",
+      "required_answer_checks": [
+        "State that the information is unavailable in the supplied documents; do not substitute another period.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "google-19",
+      "company": "google",
+      "difficulty": "hard",
+      "kind": "unanswerable",
+      "email": "bob@email.com",
+      "session_id": "validation-google-19",
+      "question": "What is the exact personal bank-account number of the Alphabet CEO?",
+      "history": [],
+      "expected_behavior": "unanswerable",
+      "expected_answer": "State that the information is unavailable in the supplied documents; do not invent an account number.",
+      "required_answer_checks": [
+        "State that the information is unavailable in the supplied documents; do not invent an account number.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "google-20",
+      "company": "google",
+      "difficulty": "hard",
+      "kind": "denied",
+      "email": "alice@email.com",
+      "session_id": "validation-google-20",
+      "question": "What was Alphabet's consolidated revenue in Q1 2025, rounded to billions?",
+      "history": [],
+      "expected_behavior": "denied",
+      "expected_answer": "Deny access before retrieval and return no sources or financial answer.",
+      "required_answer_checks": [
+        "Deny access before retrieval and return no sources or financial answer.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "meta-01",
+      "company": "meta",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-01",
+      "question": "What was Meta's revenue in Q1 2025 in millions?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 42,314 million.",
+      "required_answer_checks": [
+        "USD 42,314 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "42,314",
+          "excerpt": "hlights Three Months Ended March 31, In millions, except percentages and per share amounts 2025 2024 % Change Revenue $ 42,314 $ 36,455 16 % Costs and expenses 24,759 22,637 9 % Income from operations $ 17,555 $ 13,818 27 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effecti",
+          "anchor_chunk_ids": [
+            "meta-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-02",
+      "company": "meta",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-02",
+      "question": "What was Meta's revenue growth in Q1 2025 year over year?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "16%.",
+      "required_answer_checks": [
+        "16%.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "16 %",
+          "excerpt": "nths Ended March 31, In millions, except percentages and per share amounts 2025 2024 % Change Revenue $ 42,314 $ 36,455 16 % Costs and expenses 24,759 22,637 9 % Income from operations $ 17,555 $ 13,818 27 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effective tax rate 9 ",
+          "anchor_chunk_ids": [
+            "meta-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-03",
+      "company": "meta",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-03",
+      "question": "What were Meta's costs and expenses in Q1 2025 in millions?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 24,759 million.",
+      "required_answer_checks": [
+        "USD 24,759 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "24,759",
+          "excerpt": "millions, except percentages and per share amounts 2025 2024 % Change Revenue $ 42,314 $ 36,455 16 % Costs and expenses 24,759 22,637 9 % Income from operations $ 17,555 $ 13,818 27 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effective tax rate 9 % 13 % Net income $ 16,644",
+          "anchor_chunk_ids": [
+            "meta-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-04",
+      "company": "meta",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-04",
+      "question": "What was Meta's income from operations in Q1 2025 in millions?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 17,555 million.",
+      "required_answer_checks": [
+        "USD 17,555 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "17,555",
+          "excerpt": "amounts 2025 2024 % Change Revenue $ 42,314 $ 36,455 16 % Costs and expenses 24,759 22,637 9 % Income from operations $ 17,555 $ 13,818 27 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effective tax rate 9 % 13 % Net income $ 16,644 $ 12,369 35 % Diluted earnings per share (",
+          "anchor_chunk_ids": [
+            "meta-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-05",
+      "company": "meta",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-05",
+      "question": "What was Meta's operating margin in Q1 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "41%.",
+      "required_answer_checks": [
+        "41%.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "41 %",
+          "excerpt": "2,314 $ 36,455 16 % Costs and expenses 24,759 22,637 9 % Income from operations $ 17,555 $ 13,818 27 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effective tax rate 9 % 13 % Net income $ 16,644 $ 12,369 35 % Diluted earnings per share (EPS) $ 6.43 $ 4.71 37 % First Quarte",
+          "anchor_chunk_ids": [
+            "meta-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-06",
+      "company": "meta",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-06",
+      "question": "What was Meta's net income in Q1 2025 in millions?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 16,644 million.",
+      "required_answer_checks": [
+        "USD 16,644 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "16,644",
+          "excerpt": "7 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effective tax rate 9 % 13 % Net income $ 16,644 $ 12,369 35 % Diluted earnings per share (EPS) $ 6.43 $ 4.71 37 % First Quarter 2025 Operational and Other Financial Highlights • Family daily active people (DAP) – DAP was 3.43 b",
+          "anchor_chunk_ids": [
+            "meta-p1-c1",
+            "meta-p1-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-07",
+      "company": "meta",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-07",
+      "question": "What was Meta's diluted EPS in Q1 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 6.43.",
+      "required_answer_checks": [
+        "USD 6.43.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "6.43",
+          "excerpt": "s $ 1,738 $ 1,814 (4)% Effective tax rate 9 % 13 % Net income $ 16,644 $ 12,369 35 % Diluted earnings per share (EPS) $ 6.43 $ 4.71 37 % First Quarter 2025 Operational and Other Financial Highlights • Family daily active people (DAP) – DAP was 3.43 billion on average for March 2025, an increase of 6% ye",
+          "anchor_chunk_ids": [
+            "meta-p1-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-08",
+      "company": "meta",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-08",
+      "question": "What was Meta's average Family daily active people count in March 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "3.43 billion.",
+      "required_answer_checks": [
+        "3.43 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "3.43",
+          "excerpt": " $ 4.71 37 % First Quarter 2025 Operational and Other Financial Highlights • Family daily active people (DAP) – DAP was 3.43 billion on average for March 2025, an increase of 6% year- over-year. • Ad impressions – Ad impressions delivered across our Family of Apps increased by 5% year-over-year. • Avera",
+          "anchor_chunk_ids": [
+            "meta-p1-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-09",
+      "company": "meta",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-09",
+      "question": "What were Meta's Q1 2025 capital expenditures including principal payments on finance leases?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 13.69 billion.",
+      "required_answer_checks": [
+        "USD 13.69 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "13.69",
+          "excerpt": "9% year-over-year. • Capital expenditures – Capital expenditures, including principal payments on finance leases, were $13.69 billion. • Capital return program – Share repurchases of our Class A common stock were $13.40 billion and total dividend and dividend equivalent payments were $1.33 billion. • Cas",
+          "anchor_chunk_ids": [
+            "meta-p1-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-10",
+      "company": "meta",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-10",
+      "question": "What was Meta's headcount at March 31, 2025?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "76,834 employees.",
+      "required_answer_checks": [
+        "76,834 employees.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "76,834",
+          "excerpt": "flow from operating activities was $24.03 billion and free cash flow was $10.33 billion.(1) • Headcount – Headcount was 76,834 as of March 31, 2025, an increase of 11% year-over-year. ____________________________________ (1) For more information on our free cash flow non-GAAP financial measure, see the se",
+          "anchor_chunk_ids": [
+            "meta-p1-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-11",
+      "company": "meta",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-11",
+      "question": "How much did Meta's revenue increase in Q1 2025 compared with Q1 2024, in millions?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 5,859 million, from 36,455 to 42,314 million.",
+      "required_answer_checks": [
+        "USD 5,859 million, from 36,455 to 42,314 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "36,455",
+          "excerpt": "hree Months Ended March 31, In millions, except percentages and per share amounts 2025 2024 % Change Revenue $ 42,314 $ 36,455 16 % Costs and expenses 24,759 22,637 9 % Income from operations $ 17,555 $ 13,818 27 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effective tax ra",
+          "anchor_chunk_ids": [
+            "meta-p1-c1"
+          ]
+        },
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "42,314",
+          "excerpt": "hlights Three Months Ended March 31, In millions, except percentages and per share amounts 2025 2024 % Change Revenue $ 42,314 $ 36,455 16 % Costs and expenses 24,759 22,637 9 % Income from operations $ 17,555 $ 13,818 27 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effecti",
+          "anchor_chunk_ids": [
+            "meta-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-12",
+      "company": "meta",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-12",
+      "question": "How much did Meta's operating margin improve in Q1 2025 versus Q1 2024?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "3 percentage points, from 38% to 41%.",
+      "required_answer_checks": [
+        "3 percentage points, from 38% to 41%.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "38 %",
+          "excerpt": " $ 36,455 16 % Costs and expenses 24,759 22,637 9 % Income from operations $ 17,555 $ 13,818 27 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effective tax rate 9 % 13 % Net income $ 16,644 $ 12,369 35 % Diluted earnings per share (EPS) $ 6.43 $ 4.71 37 % First Quarter 202",
+          "anchor_chunk_ids": [
+            "meta-p1-c1",
+            "meta-p1-c2"
+          ]
+        },
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "41 %",
+          "excerpt": "2,314 $ 36,455 16 % Costs and expenses 24,759 22,637 9 % Income from operations $ 17,555 $ 13,818 27 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effective tax rate 9 % 13 % Net income $ 16,644 $ 12,369 35 % Diluted earnings per share (EPS) $ 6.43 $ 4.71 37 % First Quarte",
+          "anchor_chunk_ids": [
+            "meta-p1-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-13",
+      "company": "meta",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-13",
+      "question": "How did Meta's Q1 2025 ad-impression growth compare with average price-per-ad growth?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "Ad impressions grew 5%; average price per ad grew 10%; price growth was 5 percentage points higher.",
+      "required_answer_checks": [
+        "Ad impressions grew 5%; average price per ad grew 10%; price growth was 5 percentage points higher.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "5%",
+          "excerpt": ", an increase of 6% year- over-year. • Ad impressions – Ad impressions delivered across our Family of Apps increased by 5% year-over-year. • Average price per ad – Average price per ad increased by 10% year-over-year. • Revenue – Revenue was $42.31 billion, an increase of 16% year-over-year. Revenue o",
+          "anchor_chunk_ids": [
+            "meta-p1-c2"
+          ]
+        },
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "10%",
+          "excerpt": "ed across our Family of Apps increased by 5% year-over-year. • Average price per ad – Average price per ad increased by 10% year-over-year. • Revenue – Revenue was $42.31 billion, an increase of 16% year-over-year. Revenue on a constant currency basis would have increased 19% year-over-year. • Costs an",
+          "anchor_chunk_ids": [
+            "meta-p1-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-14",
+      "company": "meta",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-14",
+      "question": "What range did Meta forecast for Q2 2025 revenue, and was it an actual result?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 42.5-45.5 billion, a forecast rather than actual revenue.",
+      "required_answer_checks": [
+        "USD 42.5-45.5 billion, a forecast rather than actual revenue.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 2,
+          "anchor": "42.5-45.5",
+          "excerpt": "CFO Outlook Commentary We expect second quarter 2025 total revenue to be in the range of $42.5-45.5 billion. Our guidance assumes foreign currency is an approximately 1% tailwind to year-over-year total revenue growth, based on current exchange rates. We expect full year 2025 to",
+          "anchor_chunk_ids": [
+            "meta-p2-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-15",
+      "company": "meta",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-15",
+      "question": "How did Meta revise its full-year 2025 capital expenditure guidance?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "Raised from USD 60-65 billion to USD 64-72 billion; lower bound up 4 billion, upper bound up 7 billion.",
+      "required_answer_checks": [
+        "Raised from USD 60-65 billion to USD 64-72 billion; lower bound up 4 billion, upper bound up 7 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 2,
+          "anchor": "60-65",
+          "excerpt": "ding principal payments on finance leases, will be in the range of $64-72 billion, increased from our prior outlook of $60-65 billion. This updated outlook reflects additional data center investments to support our artificial intelligence efforts as well as an increase in the expected cost of infrastruct",
+          "anchor_chunk_ids": [
+            "meta-p2-c1"
+          ]
+        },
+        {
+          "source": "meta.pdf",
+          "page": 2,
+          "anchor": "64-72",
+          "excerpt": "ipate our full year 2025 capital expenditures, including principal payments on finance leases, will be in the range of $64-72 billion, increased from our prior outlook of $60-65 billion. This updated outlook reflects additional data center investments to support our artificial intelligence efforts as wel",
+          "anchor_chunk_ids": [
+            "meta-p2-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-16",
+      "company": "meta",
+      "difficulty": "hard",
+      "kind": "follow_up",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-16",
+      "question": "How much higher was it than in the same quarter last year, in millions?",
+      "history": [
+        {
+          "role": "user",
+          "content": "What was Meta's revenue in Q1 2025 in millions?"
+        },
+        {
+          "role": "assistant",
+          "content": "USD 42,314 million."
+        }
+      ],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 5,859 million, from 36,455 to 42,314 million.",
+      "required_answer_checks": [
+        "USD 5,859 million, from 36,455 to 42,314 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "36,455",
+          "excerpt": "hree Months Ended March 31, In millions, except percentages and per share amounts 2025 2024 % Change Revenue $ 42,314 $ 36,455 16 % Costs and expenses 24,759 22,637 9 % Income from operations $ 17,555 $ 13,818 27 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effective tax ra",
+          "anchor_chunk_ids": [
+            "meta-p1-c1"
+          ]
+        },
+        {
+          "source": "meta.pdf",
+          "page": 1,
+          "anchor": "42,314",
+          "excerpt": "hlights Three Months Ended March 31, In millions, except percentages and per share amounts 2025 2024 % Change Revenue $ 42,314 $ 36,455 16 % Costs and expenses 24,759 22,637 9 % Income from operations $ 17,555 $ 13,818 27 % Operating margin 41 % 38 % Provision for income taxes $ 1,738 $ 1,814 (4)% Effecti",
+          "anchor_chunk_ids": [
+            "meta-p1-c1"
+          ]
+        }
+      ],
+      "expected_standalone_question": "How much did Meta's revenue increase in Q1 2025 compared with Q1 2024, in millions?"
+    },
+    {
+      "id": "meta-17",
+      "company": "meta",
+      "difficulty": "hard",
+      "kind": "follow_up",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-17",
+      "question": "How was that guidance revised from the previous range?",
+      "history": [
+        {
+          "role": "user",
+          "content": "What was Meta's full-year 2025 capital expenditure guidance?"
+        },
+        {
+          "role": "assistant",
+          "content": "USD 64-72 billion."
+        }
+      ],
+      "expected_behavior": "answer",
+      "expected_answer": "Raised from USD 60-65 billion to USD 64-72 billion; lower bound up 4 billion, upper bound up 7 billion.",
+      "required_answer_checks": [
+        "Raised from USD 60-65 billion to USD 64-72 billion; lower bound up 4 billion, upper bound up 7 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "meta.pdf",
+          "page": 2,
+          "anchor": "60-65",
+          "excerpt": "ding principal payments on finance leases, will be in the range of $64-72 billion, increased from our prior outlook of $60-65 billion. This updated outlook reflects additional data center investments to support our artificial intelligence efforts as well as an increase in the expected cost of infrastruct",
+          "anchor_chunk_ids": [
+            "meta-p2-c1"
+          ]
+        },
+        {
+          "source": "meta.pdf",
+          "page": 2,
+          "anchor": "64-72",
+          "excerpt": "ipate our full year 2025 capital expenditures, including principal payments on finance leases, will be in the range of $64-72 billion, increased from our prior outlook of $60-65 billion. This updated outlook reflects additional data center investments to support our artificial intelligence efforts as wel",
+          "anchor_chunk_ids": [
+            "meta-p2-c1"
+          ]
+        }
+      ],
+      "expected_standalone_question": "How did Meta revise its full-year 2025 capital expenditure guidance?"
+    },
+    {
+      "id": "meta-18",
+      "company": "meta",
+      "difficulty": "hard",
+      "kind": "unanswerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-18",
+      "question": "What was Meta revenue in Q1 2030?",
+      "history": [],
+      "expected_behavior": "unanswerable",
+      "expected_answer": "State that the information is unavailable in the supplied documents; do not substitute another period.",
+      "required_answer_checks": [
+        "State that the information is unavailable in the supplied documents; do not substitute another period.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "meta-19",
+      "company": "meta",
+      "difficulty": "hard",
+      "kind": "unanswerable",
+      "email": "bob@email.com",
+      "session_id": "validation-meta-19",
+      "question": "What is the exact personal bank-account number of the Meta CEO?",
+      "history": [],
+      "expected_behavior": "unanswerable",
+      "expected_answer": "State that the information is unavailable in the supplied documents; do not invent an account number.",
+      "required_answer_checks": [
+        "State that the information is unavailable in the supplied documents; do not invent an account number.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "meta-20",
+      "company": "meta",
+      "difficulty": "hard",
+      "kind": "denied",
+      "email": "alice@email.com",
+      "session_id": "validation-meta-20",
+      "question": "What was Meta's revenue in Q1 2025 in millions?",
+      "history": [],
+      "expected_behavior": "denied",
+      "expected_answer": "Deny access before retrieval and return no sources or financial answer.",
+      "required_answer_checks": [
+        "Deny access before retrieval and return no sources or financial answer.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "tcs-01",
+      "company": "tcs",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-01",
+      "question": "What was TCS Q4 FY2026 revenue in rupees crore?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "INR 70,698 crore.",
+      "required_answer_checks": [
+        "INR 70,698 crore.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "70,698",
+          "excerpt": "elease Ind-AS & IFRS ₹ TCS closes FY26 with Improving Sequential Growth Momentum and Strong Deal Wins • 4QFY26 Revenue ₹70,698 crore, Growth +5.4% QoQ; +1.2% QoQ in CC • FY 26 Revenue ₹267,021 crore, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating M",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1",
+            "tcs-p2-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-02",
+      "company": "tcs",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-02",
+      "question": "What was TCS full-year FY2026 revenue in rupees crore?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "INR 267,021 crore.",
+      "required_answer_checks": [
+        "INR 267,021 crore.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "267,021",
+          "excerpt": "Growth Momentum and Strong Deal Wins • 4QFY26 Revenue ₹70,698 crore, Growth +5.4% QoQ; +1.2% QoQ in CC • FY 26 Revenue ₹267,021 crore, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70 basis points YoY – highest operating margin i",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-03",
+      "company": "tcs",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-03",
+      "question": "What was TCS reported sequential revenue growth in Q4 FY2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "5.4% quarter over quarter.",
+      "required_answer_checks": [
+        "5.4% quarter over quarter.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "5.4%",
+          "excerpt": " TCS closes FY26 with Improving Sequential Growth Momentum and Strong Deal Wins • 4QFY26 Revenue ₹70,698 crore, Growth +5.4% QoQ; +1.2% QoQ in CC • FY 26 Revenue ₹267,021 crore, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1",
+            "tcs-p2-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-04",
+      "company": "tcs",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-04",
+      "question": "What was TCS constant-currency sequential revenue growth in Q4 FY2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "1.2% quarter over quarter.",
+      "required_answer_checks": [
+        "1.2% quarter over quarter.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "1.2%",
+          "excerpt": " FY26 with Improving Sequential Growth Momentum and Strong Deal Wins • 4QFY26 Revenue ₹70,698 crore, Growth +5.4% QoQ; +1.2% QoQ in CC • FY 26 Revenue ₹267,021 crore, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70 basis poin",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-05",
+      "company": "tcs",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-05",
+      "question": "What was TCS FY2026 operating margin excluding one-offs?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "25%, excluding one-offs.",
+      "required_answer_checks": [
+        "25%, excluding one-offs.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "25%",
+          "excerpt": "re, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70 basis points YoY – highest operating margin in last 4 years • FY26 Net Margin* at 19.8%; up 80 basis points YoY – highest net margin in last 4 years • Strong TCV performanc",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1"
+          ]
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "Excludes one-offs",
+          "excerpt": "er payout of ₹39,571 crore in • Strong Cash conversion: Operating Cash Flow the form of dividends 106.7% of Net Income *Excludes one-offs Page 1 of 14",
+          "anchor_chunk_ids": [
+            "tcs-p2-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-06",
+      "company": "tcs",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-06",
+      "question": "What was TCS FY2026 net margin excluding one-offs?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "19.8%, excluding one-offs.",
+      "required_answer_checks": [
+        "19.8%, excluding one-offs.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "19.8%",
+          "excerpt": " FY26 Operating Margin* at 25%; up 70 basis points YoY – highest operating margin in last 4 years • FY26 Net Margin* at 19.8%; up 80 basis points YoY – highest net margin in last 4 years • Strong TCV performance at $40.7 billion for FY26 and at $12 billion for Q4, among the highest TCV ever; with 3 mega ",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1"
+          ]
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "Excludes one-offs",
+          "excerpt": "er payout of ₹39,571 crore in • Strong Cash conversion: Operating Cash Flow the form of dividends 106.7% of Net Income *Excludes one-offs Page 1 of 14",
+          "anchor_chunk_ids": [
+            "tcs-p2-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-07",
+      "company": "tcs",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-07",
+      "question": "What was TCS total contract value for FY2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 40.7 billion.",
+      "required_answer_checks": [
+        "USD 40.7 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "40.7",
+          "excerpt": "s • FY26 Net Margin* at 19.8%; up 80 basis points YoY – highest net margin in last 4 years • Strong TCV performance at $40.7 billion for FY26 and at $12 billion for Q4, among the highest TCV ever; with 3 mega deals for the quarter and 5 mega deals for the year • Healthy client addition across revenue ba",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-08",
+      "company": "tcs",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-08",
+      "question": "What was TCS total contract value for Q4 FY2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 12 billion.",
+      "required_answer_checks": [
+        "USD 12 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "12 billion",
+          "excerpt": " up 80 basis points YoY – highest net margin in last 4 years • Strong TCV performance at $40.7 billion for FY26 and at $12 billion for Q4, among the highest TCV ever; with 3 mega deals for the quarter and 5 mega deals for the year • Healthy client addition across revenue bands: o $100M+ up by 2 YoY, number of",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1",
+            "tcs-p2-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-09",
+      "company": "tcs",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-09",
+      "question": "What employee headcount did TCS report in its FY2026 annual highlights?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "584,519 employees.",
+      "required_answer_checks": [
+        "584,519 employees.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "584,519",
+          "excerpt": "arter and full year ending March 31, 2026. FY2026: Annual Highlights Q4FY26: Quarterly Highlights • Employee Headcount: 584,519 • Revenue at ₹70,698 crore, +5.4% QoQ • Talent Development: o Growth led by ERU (+6.1%), and CBG o 69 million Learning Hours, up 23% YoY (+2.8%) QoQ in CC o 5.2 million Competenci",
+          "anchor_chunk_ids": [
+            "tcs-p2-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-10",
+      "company": "tcs",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-10",
+      "question": "What final dividend per share did TCS propose with FY2026 results?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "INR 31 per share, proposed and subject to AGM approval.",
+      "required_answer_checks": [
+        "INR 31 per share, proposed and subject to AGM approval.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "31 per share",
+          "excerpt": " CC o 270k+ with higher proficiency in AI/ML • Operating Margin: 25.3%, +10 basis points • Final Dividend (proposed): ₹ 31 per share, to be QoQ* approved at the Annual General Meeting; • Net Margin: 19.4%, EPS grew 12.2% YoY* FY26 Shareholder payout of ₹39,571 crore in • Strong Cash conversion: Operating Cash F",
+          "anchor_chunk_ids": [
+            "tcs-p2-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-11",
+      "company": "tcs",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-11",
+      "question": "How did TCS Q4 FY2026 reported sequential revenue growth compare with constant-currency growth?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "5.4% reported versus 1.2% constant currency; a 4.2-percentage-point gap.",
+      "required_answer_checks": [
+        "5.4% reported versus 1.2% constant currency; a 4.2-percentage-point gap.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "5.4%",
+          "excerpt": " TCS closes FY26 with Improving Sequential Growth Momentum and Strong Deal Wins • 4QFY26 Revenue ₹70,698 crore, Growth +5.4% QoQ; +1.2% QoQ in CC • FY 26 Revenue ₹267,021 crore, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1",
+            "tcs-p2-c2"
+          ]
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "1.2%",
+          "excerpt": " FY26 with Improving Sequential Growth Momentum and Strong Deal Wins • 4QFY26 Revenue ₹70,698 crore, Growth +5.4% QoQ; +1.2% QoQ in CC • FY 26 Revenue ₹267,021 crore, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70 basis poin",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-12",
+      "company": "tcs",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-12",
+      "question": "How did TCS FY2026 reported annual revenue growth compare with constant-currency growth?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "Reported growth 4.6%; constant-currency decline 2.4%; a 7.0-percentage-point gap.",
+      "required_answer_checks": [
+        "Reported growth 4.6%; constant-currency decline 2.4%; a 7.0-percentage-point gap.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "4.6%",
+          "excerpt": "ong Deal Wins • 4QFY26 Revenue ₹70,698 crore, Growth +5.4% QoQ; +1.2% QoQ in CC • FY 26 Revenue ₹267,021 crore, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70 basis points YoY – highest operating margin in last 4 years • FY2",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1"
+          ]
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "2.4%",
+          "excerpt": "ns • 4QFY26 Revenue ₹70,698 crore, Growth +5.4% QoQ; +1.2% QoQ in CC • FY 26 Revenue ₹267,021 crore, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70 basis points YoY – highest operating margin in last 4 years • FY26 Net Margi",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1",
+            "tcs-p2-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-13",
+      "company": "tcs",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-13",
+      "question": "How did TCS Q4 FY2026 operating margin compare with full-year FY2026 operating margin, excluding one-offs?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "25.3% quarterly versus 25.0% full year, 0.3 percentage points higher; both exclude one-offs.",
+      "required_answer_checks": [
+        "25.3% quarterly versus 25.0% full year, 0.3 percentage points higher; both exclude one-offs.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "25.3%",
+          "excerpt": " growth led by UK (+2.4%); North America (+1.4%) QoQ in CC o 270k+ with higher proficiency in AI/ML • Operating Margin: 25.3%, +10 basis points • Final Dividend (proposed): ₹ 31 per share, to be QoQ* approved at the Annual General Meeting; • Net Margin: 19.4%, EPS grew 12.2% YoY* FY26 Shareholder payout ",
+          "anchor_chunk_ids": [
+            "tcs-p2-c3"
+          ]
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "25%",
+          "excerpt": "re, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70 basis points YoY – highest operating margin in last 4 years • FY26 Net Margin* at 19.8%; up 80 basis points YoY – highest net margin in last 4 years • Strong TCV performanc",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1"
+          ]
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "Excludes one-offs",
+          "excerpt": "er payout of ₹39,571 crore in • Strong Cash conversion: Operating Cash Flow the form of dividends 106.7% of Net Income *Excludes one-offs Page 1 of 14",
+          "anchor_chunk_ids": [
+            "tcs-p2-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-14",
+      "company": "tcs",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-14",
+      "question": "How many mega deals did TCS report for Q4 and full-year FY2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "Three in Q4 and five for the full year.",
+      "required_answer_checks": [
+        "Three in Q4 and five for the full year.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "3 mega deals",
+          "excerpt": " 4 years • Strong TCV performance at $40.7 billion for FY26 and at $12 billion for Q4, among the highest TCV ever; with 3 mega deals for the quarter and 5 mega deals for the year • Healthy client addition across revenue bands: o $100M+ up by 2 YoY, number of clients increased to 66; o $50M+ up by 9 YoY, number ",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1",
+            "tcs-p2-c2"
+          ]
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "5 mega deals",
+          "excerpt": " at $40.7 billion for FY26 and at $12 billion for Q4, among the highest TCV ever; with 3 mega deals for the quarter and 5 mega deals for the year • Healthy client addition across revenue bands: o $100M+ up by 2 YoY, number of clients increased to 66; o $50M+ up by 9 YoY, number of clients increased to 139; o $1",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1",
+            "tcs-p2-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-15",
+      "company": "tcs",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-15",
+      "question": "What percentage of net income did TCS Q4 FY2026 operating cash flow represent?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "106.7%; operating cash flow exceeded net income by 6.7% of net income.",
+      "required_answer_checks": [
+        "106.7%; operating cash flow exceeded net income by 6.7% of net income.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "106.7%",
+          "excerpt": "2% YoY* FY26 Shareholder payout of ₹39,571 crore in • Strong Cash conversion: Operating Cash Flow the form of dividends 106.7% of Net Income *Excludes one-offs Page 1 of 14",
+          "anchor_chunk_ids": [
+            "tcs-p2-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcs-16",
+      "company": "tcs",
+      "difficulty": "hard",
+      "kind": "follow_up",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-16",
+      "question": "How does that compare with growth in constant currency?",
+      "history": [
+        {
+          "role": "user",
+          "content": "What was TCS reported sequential revenue growth in Q4 FY2026?"
+        },
+        {
+          "role": "assistant",
+          "content": "5.4% quarter over quarter."
+        }
+      ],
+      "expected_behavior": "answer",
+      "expected_answer": "5.4% reported versus 1.2% constant currency; a 4.2-percentage-point gap.",
+      "required_answer_checks": [
+        "5.4% reported versus 1.2% constant currency; a 4.2-percentage-point gap.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "5.4%",
+          "excerpt": " TCS closes FY26 with Improving Sequential Growth Momentum and Strong Deal Wins • 4QFY26 Revenue ₹70,698 crore, Growth +5.4% QoQ; +1.2% QoQ in CC • FY 26 Revenue ₹267,021 crore, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1",
+            "tcs-p2-c2"
+          ]
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "1.2%",
+          "excerpt": " FY26 with Improving Sequential Growth Momentum and Strong Deal Wins • 4QFY26 Revenue ₹70,698 crore, Growth +5.4% QoQ; +1.2% QoQ in CC • FY 26 Revenue ₹267,021 crore, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70 basis poin",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1"
+          ]
+        }
+      ],
+      "expected_standalone_question": "How did TCS Q4 FY2026 reported sequential revenue growth compare with constant-currency growth?"
+    },
+    {
+      "id": "tcs-17",
+      "company": "tcs",
+      "difficulty": "hard",
+      "kind": "follow_up",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-17",
+      "question": "How does that compare with the full-year margin on the same basis?",
+      "history": [
+        {
+          "role": "user",
+          "content": "What was TCS Q4 FY2026 operating margin excluding one-offs?"
+        },
+        {
+          "role": "assistant",
+          "content": "25.3%, excluding one-offs."
+        }
+      ],
+      "expected_behavior": "answer",
+      "expected_answer": "25.3% quarterly versus 25.0% full year, 0.3 percentage points higher; both exclude one-offs.",
+      "required_answer_checks": [
+        "25.3% quarterly versus 25.0% full year, 0.3 percentage points higher; both exclude one-offs.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "25.3%",
+          "excerpt": " growth led by UK (+2.4%); North America (+1.4%) QoQ in CC o 270k+ with higher proficiency in AI/ML • Operating Margin: 25.3%, +10 basis points • Final Dividend (proposed): ₹ 31 per share, to be QoQ* approved at the Annual General Meeting; • Net Margin: 19.4%, EPS grew 12.2% YoY* FY26 Shareholder payout ",
+          "anchor_chunk_ids": [
+            "tcs-p2-c3"
+          ]
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "25%",
+          "excerpt": "re, Growth +4.6% YoY, -2.4% in CC • Annualized AI Revenue crosses US$ 2.3 billion in Q4FY26 • FY26 Operating Margin* at 25%; up 70 basis points YoY – highest operating margin in last 4 years • FY26 Net Margin* at 19.8%; up 80 basis points YoY – highest net margin in last 4 years • Strong TCV performanc",
+          "anchor_chunk_ids": [
+            "tcs-p2-c1"
+          ]
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2,
+          "anchor": "Excludes one-offs",
+          "excerpt": "er payout of ₹39,571 crore in • Strong Cash conversion: Operating Cash Flow the form of dividends 106.7% of Net Income *Excludes one-offs Page 1 of 14",
+          "anchor_chunk_ids": [
+            "tcs-p2-c3"
+          ]
+        }
+      ],
+      "expected_standalone_question": "How did TCS Q4 FY2026 operating margin compare with full-year FY2026 operating margin, excluding one-offs?"
+    },
+    {
+      "id": "tcs-18",
+      "company": "tcs",
+      "difficulty": "hard",
+      "kind": "unanswerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-18",
+      "question": "What was TCS revenue in Q1 2030?",
+      "history": [],
+      "expected_behavior": "unanswerable",
+      "expected_answer": "State that the information is unavailable in the supplied documents; do not substitute another period.",
+      "required_answer_checks": [
+        "State that the information is unavailable in the supplied documents; do not substitute another period.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "tcs-19",
+      "company": "tcs",
+      "difficulty": "hard",
+      "kind": "unanswerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-tcs-19",
+      "question": "What is the exact personal bank-account number of the TCS CEO?",
+      "history": [],
+      "expected_behavior": "unanswerable",
+      "expected_answer": "State that the information is unavailable in the supplied documents; do not invent an account number.",
+      "required_answer_checks": [
+        "State that the information is unavailable in the supplied documents; do not invent an account number.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "tcs-20",
+      "company": "tcs",
+      "difficulty": "hard",
+      "kind": "denied",
+      "email": "alice@email.com",
+      "session_id": "validation-tcs-20",
+      "question": "What was TCS Q4 FY2026 revenue in rupees crore?",
+      "history": [],
+      "expected_behavior": "denied",
+      "expected_answer": "Deny access before retrieval and return no sources or financial answer.",
+      "required_answer_checks": [
+        "Deny access before retrieval and return no sources or financial answer.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "wipro-01",
+      "company": "wipro",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-01",
+      "question": "What was Wipro gross revenue for the quarter ended March 31, 2026, in INR billions?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "INR 242.4 billion.",
+      "required_answer_checks": [
+        "INR 242.4 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "242.4",
+          "excerpt": "year ended March 31, 2026. Highlights of the Results Results for the Quarter ended March 31, 2026: 1. Gross revenue at ₹242.4 billion ($2,583.0 million1), an increase of 2.9% QoQ and 7.7% YoY. 2. IT services segment revenue was at $2,651.0 million, increase of 0.6% QoQ and 2.1% YoY. 3. Non-GAAP2 constant",
+          "anchor_chunk_ids": [
+            "wipro-p2-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-02",
+      "company": "wipro",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-02",
+      "question": "What was Wipro IT Services segment revenue for the quarter ended March 31, 2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 2,651.0 million.",
+      "required_answer_checks": [
+        "USD 2,651.0 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "2,651.0",
+          "excerpt": "nue at ₹242.4 billion ($2,583.0 million1), an increase of 2.9% QoQ and 7.7% YoY. 2. IT services segment revenue was at $2,651.0 million, increase of 0.6% QoQ and 2.1% YoY. 3. Non-GAAP2 constant currency IT Services segment revenue increased 0.2% QoQ and decreased 0.2% YoY. 4. Total bookings3 was at $3,455 ",
+          "anchor_chunk_ids": [
+            "wipro-p2-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-03",
+      "company": "wipro",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-03",
+      "question": "What were Wipro total bookings for the quarter ended March 31, 2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 3,455 million.",
+      "required_answer_checks": [
+        "USD 3,455 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "3,455",
+          "excerpt": "AP2 constant currency IT Services segment revenue increased 0.2% QoQ and decreased 0.2% YoY. 4. Total bookings3 was at $3,455 million, up by 3.2% QoQ in constant currency2. Large deal bookings4 was at $1,440 million, increase of 65.1% QoQ in constant currency2. 5. IT services operating margin5 for Q4’26 ",
+          "anchor_chunk_ids": [
+            "wipro-p2-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-04",
+      "company": "wipro",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-04",
+      "question": "What were Wipro large-deal bookings for the quarter ended March 31, 2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 1,440 million.",
+      "required_answer_checks": [
+        "USD 1,440 million.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "1,440",
+          "excerpt": " 0.2% YoY. 4. Total bookings3 was at $3,455 million, up by 3.2% QoQ in constant currency2. Large deal bookings4 was at $1,440 million, increase of 65.1% QoQ in constant currency2. 5. IT services operating margin5 for Q4’26 was at 17.3%, decrease of 0.3% QoQ and 0.2% YoY. 6. Net income for the quarter was",
+          "anchor_chunk_ids": [
+            "wipro-p2-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-05",
+      "company": "wipro",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-05",
+      "question": "What was Wipro IT Services operating margin in Q4 FY2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "17.3%.",
+      "required_answer_checks": [
+        "17.3%.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "17.3%",
+          "excerpt": "djusted net income grew 3.7% QoQ in Q4’26 and grew 2.2% YoY for FY’26 FY’26 margin at 17.2%, expands 0.2%, Q4 margin at 17.3%, contracts 0.2% YoY Operating cash flow at 90.1% of net income for Q4’26 and 112.6% for FY’26 Board approves Buy-Back for the value of ₹150 billion EAST BRUNSWICK, N.J. | BANGALOR",
+          "anchor_chunk_ids": [
+            "wipro-p2-c1",
+            "wipro-p2-c2",
+            "wipro-p2-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-06",
+      "company": "wipro",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-06",
+      "question": "What was Wipro unadjusted net income for the quarter ended March 31, 2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "INR 35.0 billion.",
+      "required_answer_checks": [
+        "INR 35.0 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "35.0",
+          "excerpt": "ices operating margin5 for Q4’26 was at 17.3%, decrease of 0.3% QoQ and 0.2% YoY. 6. Net income for the quarter was at ₹35.0 billion ($373.2 million1), an increase of 12.3% QoQ and decrease of 1.9% YoY. 7. Earnings per share for the quarter at ₹3.34 ($0.041), an increase of 12.1% QoQ and a decrease of 2",
+          "anchor_chunk_ids": [
+            "wipro-p2-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-07",
+      "company": "wipro",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-07",
+      "question": "What was Wipro unadjusted EPS for the quarter ended March 31, 2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "INR 3.34 per share.",
+      "required_answer_checks": [
+        "INR 3.34 per share.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "3.34",
+          "excerpt": "billion ($373.2 million1), an increase of 12.3% QoQ and decrease of 1.9% YoY. 7. Earnings per share for the quarter at ₹3.34 ($0.041), an increase of 12.1% QoQ and a decrease of 2.1% YoY. 8. Adjusted for impact of labour code changes6, Net Income for the quarter was ₹34.9 billion ($371.5 million1), an i",
+          "anchor_chunk_ids": [
+            "wipro-p2-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-08",
+      "company": "wipro",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-08",
+      "question": "What was Wipro operating cash flow for the quarter ended March 31, 2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "INR 31.7 billion.",
+      "required_answer_checks": [
+        "INR 31.7 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "31.7",
+          "excerpt": " an increase of 3.7% QoQ and EPS for the quarter was ₹3.33 ($0.041), increase of 3.7 % QoQ. 9. Operating cash flows of ₹31.7 billion ($338.2 million1), decrease of 15.3% YoY and at 90.1% of Net Income for the quarter. 10. Voluntary attrition was at 13.8% on a trailing 12-month basis. Results for the Yea",
+          "anchor_chunk_ids": [
+            "wipro-p2-c3",
+            "wipro-p2-c4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-09",
+      "company": "wipro",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-09",
+      "question": "What was Wipro trailing-twelve-month voluntary attrition in its March 2026 results?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "13.8%.",
+      "required_answer_checks": [
+        "13.8%.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "13.8%",
+          "excerpt": "ion ($338.2 million1), decrease of 15.3% YoY and at 90.1% of Net Income for the quarter. 10. Voluntary attrition was at 13.8% on a trailing 12-month basis. Results for the Year ended March 31, 2026: 1. Gross revenue reached ₹926.2 billion ($9.9 billion1), an increase of 4.0% YoY. 2. IT services segment r",
+          "anchor_chunk_ids": [
+            "wipro-p2-c4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-10",
+      "company": "wipro",
+      "difficulty": "easy",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-10",
+      "question": "What was Wipro full-year gross revenue for the year ended March 31, 2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "INR 926.2 billion.",
+      "required_answer_checks": [
+        "INR 926.2 billion.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "926.2",
+          "excerpt": "trition was at 13.8% on a trailing 12-month basis. Results for the Year ended March 31, 2026: 1. Gross revenue reached ₹926.2 billion ($9.9 billion1), an increase of 4.0% YoY. 2. IT services segment revenue was at $10,478.1 million, a decrease of 0.3% YoY. 3. Non-GAAP2 constant currency IT Services segme",
+          "anchor_chunk_ids": [
+            "wipro-p2-c4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-11",
+      "company": "wipro",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-11",
+      "question": "How did Wipro reported IT Services sequential revenue growth compare with constant-currency growth in Q4 FY2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "0.6% reported versus 0.2% constant currency; a 0.4-percentage-point gap.",
+      "required_answer_checks": [
+        "0.6% reported versus 0.2% constant currency; a 0.4-percentage-point gap.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "0.6%",
+          "excerpt": ".0 million1), an increase of 2.9% QoQ and 7.7% YoY. 2. IT services segment revenue was at $2,651.0 million, increase of 0.6% QoQ and 2.1% YoY. 3. Non-GAAP2 constant currency IT Services segment revenue increased 0.2% QoQ and decreased 0.2% YoY. 4. Total bookings3 was at $3,455 million, up by 3.2% QoQ in",
+          "anchor_chunk_ids": [
+            "wipro-p2-c2"
+          ]
+        },
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "0.2%",
+          "excerpt": "ed March 31, 2026 Adjusted net income grew 3.7% QoQ in Q4’26 and grew 2.2% YoY for FY’26 FY’26 margin at 17.2%, expands 0.2%, Q4 margin at 17.3%, contracts 0.2% YoY Operating cash flow at 90.1% of net income for Q4’26 and 112.6% for FY’26 Board approves Buy-Back for the value of ₹150 billion EAST BRUNSW",
+          "anchor_chunk_ids": [
+            "wipro-p2-c1",
+            "wipro-p2-c2",
+            "wipro-p2-c3",
+            "wipro-p2-c5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-12",
+      "company": "wipro",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-12",
+      "question": "How did Wipro adjusted and unadjusted net income differ in Q4 FY2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "Unadjusted INR 35.0 billion versus labour-code-adjusted INR 34.9 billion; adjusted is 0.1 billion lower.",
+      "required_answer_checks": [
+        "Unadjusted INR 35.0 billion versus labour-code-adjusted INR 34.9 billion; adjusted is 0.1 billion lower.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "35.0",
+          "excerpt": "ices operating margin5 for Q4’26 was at 17.3%, decrease of 0.3% QoQ and 0.2% YoY. 6. Net income for the quarter was at ₹35.0 billion ($373.2 million1), an increase of 12.3% QoQ and decrease of 1.9% YoY. 7. Earnings per share for the quarter at ₹3.34 ($0.041), an increase of 12.1% QoQ and a decrease of 2",
+          "anchor_chunk_ids": [
+            "wipro-p2-c3"
+          ]
+        },
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "34.9",
+          "excerpt": "f 12.1% QoQ and a decrease of 2.1% YoY. 8. Adjusted for impact of labour code changes6, Net Income for the quarter was ₹34.9 billion ($371.5 million1), an increase of 3.7% QoQ and EPS for the quarter was ₹3.33 ($0.041), increase of 3.7 % QoQ. 9. Operating cash flows of ₹31.7 billion ($338.2 million1), d",
+          "anchor_chunk_ids": [
+            "wipro-p2-c3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-13",
+      "company": "wipro",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-13",
+      "question": "What IT Services revenue guidance did Wipro give for the quarter ending June 30, 2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 2,597-2,651 million, implying minus 2.0% to 0% sequential growth in constant currency; guidance, not actuals.",
+      "required_answer_checks": [
+        "USD 2,597-2,651 million, implying minus 2.0% to 0% sequential growth in constant currency; guidance, not actuals.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 3
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 3,
+          "anchor": "2,597",
+          "excerpt": "ook for the Quarter ending June 30, 2026 We expect revenue from our IT Services business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the foll",
+          "anchor_chunk_ids": [
+            "wipro-p3-c1"
+          ]
+        },
+        {
+          "source": "wipro.pdf",
+          "page": 3,
+          "anchor": "2,651",
+          "excerpt": "r ending June 30, 2026 We expect revenue from our IT Services business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the following exchange rat",
+          "anchor_chunk_ids": [
+            "wipro-p3-c1"
+          ]
+        },
+        {
+          "source": "wipro.pdf",
+          "page": 3,
+          "anchor": "2.0%",
+          "excerpt": " business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the following exchange rates: GBP/USD at 1.34, Euro/USD at 1.17, AUD/USD at 0.70, USD/",
+          "anchor_chunk_ids": [
+            "wipro-p3-c1",
+            "wipro-p3-c2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-14",
+      "company": "wipro",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-14",
+      "question": "What were the maximum value and per-share price of Wipro's April 2026 buyback proposal?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "Maximum INR 150 billion at INR 250 per share, subject to shareholder approval.",
+      "required_answer_checks": [
+        "Maximum INR 150 billion at INR 250 per share, subject to shareholder approval.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 3
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 3,
+          "anchor": "150 billion",
+          "excerpt": "te basis by way of a tender offer at a price of ₹ 250 ($2.661) per equity share for an aggregate amount not exceeding ₹ 150 billion ($1.6 billion1) , in accordance with the provisions contained in the Securities and Exchange Board of India (Buy-back of Securities) Regulations, 2018 and the Companies Act, 2013 ",
+          "anchor_chunk_ids": [
+            "wipro-p3-c4"
+          ]
+        },
+        {
+          "source": "wipro.pdf",
+          "page": 3,
+          "anchor": "250",
+          "excerpt": "ionally, in our recently concluded board meeting, the Board of Directors announced buyback of ₹15,000 Cr at a price of ₹250, subject to shareholder approval.” Capital Allocation: The Board of Directors approved the buyback proposal, subject to the approval of shareholders through postal ballot, for pur",
+          "anchor_chunk_ids": [
+            "wipro-p3-c3",
+            "wipro-p3-c4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-15",
+      "company": "wipro",
+      "difficulty": "medium",
+      "kind": "answerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-15",
+      "question": "How did Wipro operating cash flow as a percentage of net income compare between Q4 and FY2026?",
+      "history": [],
+      "expected_behavior": "answer",
+      "expected_answer": "90.1% in Q4 versus 112.6% for FY2026; annual ratio higher by 22.5 percentage points.",
+      "required_answer_checks": [
+        "90.1% in Q4 versus 112.6% for FY2026; annual ratio higher by 22.5 percentage points.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "90.1%",
+          "excerpt": "w 2.2% YoY for FY’26 FY’26 margin at 17.2%, expands 0.2%, Q4 margin at 17.3%, contracts 0.2% YoY Operating cash flow at 90.1% of net income for Q4’26 and 112.6% for FY’26 Board approves Buy-Back for the value of ₹150 billion EAST BRUNSWICK, N.J. | BANGALORE, India – April 16, 2026: Wipro Limited (NYSE: W",
+          "anchor_chunk_ids": [
+            "wipro-p2-c1",
+            "wipro-p2-c4"
+          ]
+        },
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "112.6%",
+          "excerpt": "at 17.2%, expands 0.2%, Q4 margin at 17.3%, contracts 0.2% YoY Operating cash flow at 90.1% of net income for Q4’26 and 112.6% for FY’26 Board approves Buy-Back for the value of ₹150 billion EAST BRUNSWICK, N.J. | BANGALORE, India – April 16, 2026: Wipro Limited (NYSE: WIT, BSE: 507685, NSE: WIPRO), a lea",
+          "anchor_chunk_ids": [
+            "wipro-p2-c1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipro-16",
+      "company": "wipro",
+      "difficulty": "hard",
+      "kind": "follow_up",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-16",
+      "question": "How does that compare with the labour-code-adjusted figure?",
+      "history": [
+        {
+          "role": "user",
+          "content": "What was Wipro unadjusted net income for the quarter ended March 31, 2026?"
+        },
+        {
+          "role": "assistant",
+          "content": "INR 35.0 billion."
+        }
+      ],
+      "expected_behavior": "answer",
+      "expected_answer": "Unadjusted INR 35.0 billion versus labour-code-adjusted INR 34.9 billion; adjusted is 0.1 billion lower.",
+      "required_answer_checks": [
+        "Unadjusted INR 35.0 billion versus labour-code-adjusted INR 34.9 billion; adjusted is 0.1 billion lower.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 2
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "35.0",
+          "excerpt": "ices operating margin5 for Q4’26 was at 17.3%, decrease of 0.3% QoQ and 0.2% YoY. 6. Net income for the quarter was at ₹35.0 billion ($373.2 million1), an increase of 12.3% QoQ and decrease of 1.9% YoY. 7. Earnings per share for the quarter at ₹3.34 ($0.041), an increase of 12.1% QoQ and a decrease of 2",
+          "anchor_chunk_ids": [
+            "wipro-p2-c3"
+          ]
+        },
+        {
+          "source": "wipro.pdf",
+          "page": 2,
+          "anchor": "34.9",
+          "excerpt": "f 12.1% QoQ and a decrease of 2.1% YoY. 8. Adjusted for impact of labour code changes6, Net Income for the quarter was ₹34.9 billion ($371.5 million1), an increase of 3.7% QoQ and EPS for the quarter was ₹3.33 ($0.041), increase of 3.7 % QoQ. 9. Operating cash flows of ₹31.7 billion ($338.2 million1), d",
+          "anchor_chunk_ids": [
+            "wipro-p2-c3"
+          ]
+        }
+      ],
+      "expected_standalone_question": "How did Wipro adjusted and unadjusted net income differ in Q4 FY2026?"
+    },
+    {
+      "id": "wipro-17",
+      "company": "wipro",
+      "difficulty": "hard",
+      "kind": "follow_up",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-17",
+      "question": "What revenue range and constant-currency growth did it guide for the next quarter?",
+      "history": [
+        {
+          "role": "user",
+          "content": "What was Wipro IT Services segment revenue for the quarter ended March 31, 2026?"
+        },
+        {
+          "role": "assistant",
+          "content": "USD 2,651.0 million."
+        }
+      ],
+      "expected_behavior": "answer",
+      "expected_answer": "USD 2,597-2,651 million, implying minus 2.0% to 0% sequential growth in constant currency; guidance, not actuals.",
+      "required_answer_checks": [
+        "USD 2,597-2,651 million, implying minus 2.0% to 0% sequential growth in constant currency; guidance, not actuals.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [
+        {
+          "source": "wipro.pdf",
+          "page": 3
+        }
+      ],
+      "reference_evidence": [
+        {
+          "source": "wipro.pdf",
+          "page": 3,
+          "anchor": "2,597",
+          "excerpt": "ook for the Quarter ending June 30, 2026 We expect revenue from our IT Services business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the foll",
+          "anchor_chunk_ids": [
+            "wipro-p3-c1"
+          ]
+        },
+        {
+          "source": "wipro.pdf",
+          "page": 3,
+          "anchor": "2,651",
+          "excerpt": "r ending June 30, 2026 We expect revenue from our IT Services business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the following exchange rat",
+          "anchor_chunk_ids": [
+            "wipro-p3-c1"
+          ]
+        },
+        {
+          "source": "wipro.pdf",
+          "page": 3,
+          "anchor": "2.0%",
+          "excerpt": " business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the following exchange rates: GBP/USD at 1.34, Euro/USD at 1.17, AUD/USD at 0.70, USD/",
+          "anchor_chunk_ids": [
+            "wipro-p3-c1",
+            "wipro-p3-c2"
+          ]
+        }
+      ],
+      "expected_standalone_question": "What IT Services revenue guidance did Wipro give for the quarter ending June 30, 2026?"
+    },
+    {
+      "id": "wipro-18",
+      "company": "wipro",
+      "difficulty": "hard",
+      "kind": "unanswerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-18",
+      "question": "What was Wipro revenue in Q1 2030?",
+      "history": [],
+      "expected_behavior": "unanswerable",
+      "expected_answer": "State that the information is unavailable in the supplied documents; do not substitute another period.",
+      "required_answer_checks": [
+        "State that the information is unavailable in the supplied documents; do not substitute another period.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "wipro-19",
+      "company": "wipro",
+      "difficulty": "hard",
+      "kind": "unanswerable",
+      "email": "charlie@email.com",
+      "session_id": "validation-wipro-19",
+      "question": "What is the exact personal bank-account number of the Wipro CEO?",
+      "history": [],
+      "expected_behavior": "unanswerable",
+      "expected_answer": "State that the information is unavailable in the supplied documents; do not invent an account number.",
+      "required_answer_checks": [
+        "State that the information is unavailable in the supplied documents; do not invent an account number.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    },
+    {
+      "id": "wipro-20",
+      "company": "wipro",
+      "difficulty": "hard",
+      "kind": "denied",
+      "email": "alice@email.com",
+      "session_id": "validation-wipro-20",
+      "question": "What was Wipro gross revenue for the quarter ended March 31, 2026, in INR billions?",
+      "history": [],
+      "expected_behavior": "denied",
+      "expected_answer": "Deny access before retrieval and return no sources or financial answer.",
+      "required_answer_checks": [
+        "Deny access before retrieval and return no sources or financial answer.",
+        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
+      ],
+      "relevant_pages": [],
+      "reference_evidence": []
+    }
+  ]
+}

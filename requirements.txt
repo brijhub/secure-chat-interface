@@ -1,0 +1,9 @@
+pymupdf
+transformers
+sentence-transformers
+torch
+chromadb
+fastapi
+uvicorn
+streamlit
+requests

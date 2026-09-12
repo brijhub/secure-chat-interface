@@ -1,0 +1,54 @@
+{
+  "created_at": "2026-09-12T19:55:51.711064+00:00",
+  "status": "error",
+  "test_type": "Document retrieval and explicit company-access checks",
+  "rewrite_mode": "gold",
+  "dataset_sha256": "835598f024e24ac293d3966166108e353209236163539a027101be4149354868",
+  "current_user_access": {
+    "alice@email.com": [
+      "meta"
+    ],
+    "bob@email.com": [
+      "meta",
+      "google"
+    ],
+    "charlie@email.com": [
+      "tcs",
+      "wipro",
+      "amazon"
+    ]
+  },
+  "meaning": "Success means at least one labelled relevant PDF page appeared in the top 5 chunks. Errors count as misses.",
+  "limitations": [
+    "This does not measure LLM answer accuracy, citation correctness, or UI response time.",
+    "Unanswerable questions are not scored; they need answer-generation checks.",
+    "Gold mode uses labelled follow-up rewrites, so it does not test LLM rewriting.",
+    "Page labels are curated, not exhaustive. This is a development dataset.",
+    "Access checks test explicit company requests, not all possible attempts to bypass permissions."
+  ],
+  "permission_warnings": [
+    "amazon-01: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-02: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-03: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-04: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-05: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-06: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-07: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-08: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-09: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-10: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-11: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-12: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-13: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-14: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-15: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-16: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-17: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-18: current permissions for alice@email.com differ from the dataset's expected access.",
+    "amazon-19: current permissions for alice@email.com differ from the dataset's expected access.",
+    "meta-20: current permissions for alice@email.com differ from the dataset's expected access."
+  ],
+  "dataset_questions": 100,
+  "error": "SSLError: [X509: NO_CERTIFICATE_OR_CRL_FOUND] no certificate or crl found (_ssl.c:4358)",
+  "total_seconds_including_setup": 13.43
+}
