@@ -6,12 +6,8 @@ import logging
 import time
 from uuid import uuid4
 
-if __package__:
-    from .config import LLM_MAX_NEW_TOKENS, LLM_PARALLEL_REQUESTS, LLM_CPU_THREADS
-    from .model import load_model, generate_text as generate_local
-else:
-    from config import LLM_MAX_NEW_TOKENS, LLM_PARALLEL_REQUESTS, LLM_CPU_THREADS
-    from model import load_model, generate_text as generate_local
+from config import LLM_MAX_NEW_TOKENS, LLM_PARALLEL_REQUESTS, LLM_CPU_THREADS
+from model import load_model, generate_text as generate_local
 
 _pool = None
 _pool_lock = Lock()

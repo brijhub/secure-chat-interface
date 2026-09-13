@@ -5,14 +5,10 @@ from difflib import SequenceMatcher
 from functools import lru_cache
 from threading import Lock
 
-embedding_lock = Lock()
+from config import COMPANY_ALIASES, COMPANY_FUZZY_THRESHOLD, MAX_HISTORY_MESSAGES, TOP_K, USER_ACCESS, CHROMA_PATH, COLLECTION_NAME, EMBEDDING_MODEL
+from inference import generate_text
 
-if __package__:
-    from .config import COMPANY_ALIASES, COMPANY_FUZZY_THRESHOLD, MAX_HISTORY_MESSAGES, TOP_K, USER_ACCESS, CHROMA_PATH, COLLECTION_NAME, EMBEDDING_MODEL
-    from .inference import generate_text
-else:
-    from config import COMPANY_ALIASES, COMPANY_FUZZY_THRESHOLD, MAX_HISTORY_MESSAGES, TOP_K, USER_ACCESS, CHROMA_PATH, COLLECTION_NAME, EMBEDDING_MODEL
-    from inference import generate_text
+embedding_lock = Lock()
 
 
 def rewrite_question(question: str, history: list[dict]) -> str:
@@ -60,7 +56,6 @@ def fuzzy_company_matches(question):
     }
     matches = set()
     for word in re.findall(r"[a-z]+", question.lower()):
-        # Exact names are handled separately. Ignore short ordinary words.
         if word in aliases or len(word) < 4:
             continue
         for alias, company in aliases.items():
@@ -80,8 +75,7 @@ def check_access(question, email):
     if not question.strip():
         raise ValueError("Question cannot be empty.")
 
-    # This simple name check gives clear denials for explicit company requests.
-    # The database filter below still enforces document access on every query.
+    # Name checks provide early denials; retrieval also filters by company.
     mentioned_companies = {
         company
         for company, aliases in COMPANY_ALIASES.items()
@@ -170,8 +164,7 @@ def answer_question(question: str, email: str, history: list[dict] | None = None
         return {"answer": "Information not found in your permitted documents.",
                 "sources": [], "retrieval_query": retrieval_query}
 
-    # A small model may reuse historical figures for an unsupported future year.
-    # Conservatively abstain when an explicit four-digit year is absent entirely.
+    # Year presence is a conservative check, not proof of period-specific support.
     requested_years = set(re.findall(r"\b(?:19|20)\d{2}\b", question + " " + retrieval_query))
     source_years = set(re.findall(
         r"\b(?:19|20)\d{2}\b", "\n".join(source["text"] for source in sources)
@@ -207,7 +200,7 @@ def answer_question(question: str, email: str, history: list[dict] | None = None
     answer = generate_text(messages)
     if not answer:
         raise ValueError("The language model returned an empty answer. Please retry.")
-    # Select supporting sources separately if the answer lacks valid citations.
+    # Retry source selection once; citation ranges do not verify factual support.
     for attempt in range(2):
         if "information not found" in answer.lower():
             return {"answer": "Information not found in your permitted documents.",
@@ -231,17 +224,3 @@ def answer_question(question: str, email: str, history: list[dict] | None = None
             answer = re.sub(r"\[\d+\]", "", answer).strip() + " " + selection
     return {"answer": "I couldn't produce an answer with valid source references. Please rephrase your question.",
             "sources": [], "retrieval_query": retrieval_query}
-
-
-if __name__ == "__main__":
-    history = [
-        {"role": "user", "content": "What were Amazon's net sales in Q1 2025?"},
-        {"role": "assistant", "content": "Amazon reported net sales of $155.7 billion in Q1 2025."},
-    ]
-    question = "How did it compare with last year?"
-    print("Follow-up:", question)
-    result = answer_question(question, "alice@email.com", history)
-    print("Retrieval query:", result["retrieval_query"])
-    print("Answer:", result["answer"])
-    for index, source in enumerate(result["sources"], start=1):
-        print(f"[{source.get('citation_number', index)}] {source['source']} page {source['page']} ({source['id']})")

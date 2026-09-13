@@ -10,10 +10,10 @@ import sys
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "src"))
 import pymupdf
 
-from src.config import TOP_K, USER_ACCESS, CHUNK_OVERLAP, CHUNK_SIZE, EMBEDDING_MODEL
+from config import TOP_K, USER_ACCESS, CHUNK_OVERLAP, CHUNK_SIZE, EMBEDDING_MODEL
 
 OUTPUT = ROOT / 'validation/results.json'
 
@@ -74,6 +74,19 @@ def check_dataset():
     return permission_warnings
 
 
+def retrieval_metrics(ranked_pages, expected, k=TOP_K):
+    """Use page labels for chunk relevance; count each page once for recall."""
+    if k < 1 or not expected:
+        raise ValueError('A positive k and nonempty relevant-page labels are required.')
+    ranked_pages = ranked_pages[:k]
+    relevant = [page in expected for page in ranked_pages]
+    return {
+        'precision_at_k': sum(relevant) / k,
+        'recall_at_k': len(set(ranked_pages) & expected) / len(expected),
+        'reciprocal_rank_at_k': next((1 / rank for rank, hit in enumerate(relevant, 1) if hit), 0.0),
+    }
+
+
 def summarize(rows):
     total = len(rows)
     found = sum(row['found_relevant_page'] for row in rows)
@@ -82,9 +95,32 @@ def summarize(rows):
         'questions_with_relevant_page': found,
         'retrieval_success_percent': round(100 * found / total, 2) if total else None,
         'first_result_correct_percent': round(100 * sum(r['first_result_correct'] for r in rows) / total, 2) if total else None,
+        'precision_at_k_percent': round(100 * sum(r['precision_at_k'] for r in rows) / total, 2) if total else None,
+        'recall_at_k_percent': round(100 * sum(r['recall_at_k'] for r in rows) / total, 2) if total else None,
+        'mrr_at_k': round(sum(r['reciprocal_rank_at_k'] for r in rows) / total, 4) if total else None,
         'errors': sum('error' in row for row in rows),
         'average_search_seconds': round(sum(r['seconds'] for r in rows) / total, 3) if total else None,
     }
+
+
+def compare_cutoffs(rows, cases, cutoffs=(3, 5)):
+    """Score prefixes of the same ranked results without changing retrieval."""
+    labels = {case['id']: {(p['source'], p['page']) for p in case['relevant_pages']}
+              for case in cases}
+    comparison = {}
+    for k in cutoffs:
+        scored = []
+        for row in rows:
+            pages = [(p['source'], p['page']) for p in row.get('ranked_chunks', [])][:k]
+            metrics = retrieval_metrics(pages, labels[row['id']], k)
+            scored.append(dict(row, **metrics,
+                               found_relevant_page=bool(metrics['recall_at_k']),
+                               first_result_correct=bool(pages and pages[0] in labels[row['id']])))
+        summary = summarize(scored)
+        summary.pop('average_search_seconds')
+        summary['missed_question_ids'] = [r['id'] for r in scored if not r['found_relevant_page']]
+        comparison[str(k)] = summary
+    return comparison
 
 
 def main():
@@ -99,6 +135,13 @@ def main():
         'status': 'error',
         'test_type': 'Document retrieval and explicit company-access checks',
         'rewrite_mode': args.rewrite_mode,
+        'k': TOP_K,
+        'metric_definitions': {
+            'precision_at_k': 'Fraction of top-k chunk slots whose source page is labelled relevant; missing slots score zero.',
+            'recall_at_k': 'Fraction of labelled relevant pages covered by the top-k chunks; duplicate pages count once.',
+            'mrr_at_k': 'Mean reciprocal rank of the first chunk from a labelled relevant page, or zero if absent in top k.',
+            'aggregation': 'Macro averages across answerable and follow-up questions; errors score zero.',
+        },
         'dataset_sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
         'current_user_access': USER_ACCESS,
         'meaning': f'Success means at least one labelled relevant PDF page appeared in the top {TOP_K} chunks. Errors count as misses.',
@@ -107,6 +150,7 @@ def main():
             'Unanswerable questions are not scored; they need answer-generation checks.',
             'Gold mode uses labelled follow-up rewrites, so it does not test LLM rewriting.',
             'Page labels are curated, not exhaustive. This is a development dataset.',
+            'Page labels are a proxy for chunk relevance; a chunk on a relevant page may not contain the answer.',
             'Access checks test explicit company requests, not all possible attempts to bypass permissions.',
         ],
     }
@@ -114,7 +158,7 @@ def main():
         report['permission_warnings'] = check_dataset()
         dataset = json.loads(path.read_text(encoding='utf-8'))
         report['dataset_questions'] = len(dataset['cases'])
-        from src import rag
+        import rag
         model, collection = rag.load_retriever()
         if collection.count() != dataset['dataset_fingerprint']['chunk_count']:
             raise ValueError('Index chunk count differs from dataset. Rebuild/review labels.')
@@ -135,6 +179,7 @@ def main():
                 continue
             row = {key: case[key] for key in ('id', 'company', 'difficulty', 'question')}
             row.update(found_relevant_page=False, first_result_correct=False)
+            row.update(precision_at_k=0.0, recall_at_k=0.0, reciprocal_rank_at_k=0.0)
             timer = time.perf_counter()
             try:
                 rag.check_access(case['question'], case['email'])
@@ -145,8 +190,14 @@ def main():
                 metadata = result['metadatas'][0]
                 if any(m['company'] not in USER_ACCESS[case['email']] for m in metadata):
                     raise RuntimeError('Retrieved an unauthorized company.')
-                pages = list(dict.fromkeys((m['source'], m['page']) for m in metadata))
+                ranked_pages = [(m['source'], m['page']) for m in metadata[:TOP_K]]
+                pages = list(dict.fromkeys(ranked_pages))
                 expected = {(r['source'], r['page']) for r in case['relevant_pages']}
+                row.update(retrieval_metrics(ranked_pages, expected))
+                row['ranked_chunks'] = [
+                    {'id': chunk_id, 'source': source, 'page': page}
+                    for chunk_id, (source, page) in zip(result['ids'][0], ranked_pages)
+                ]
                 row.update(retrieval_query=query,
                            found_relevant_page=bool(set(pages) & expected),
                            first_result_correct=bool(pages and pages[0] in expected),
@@ -156,6 +207,8 @@ def main():
             row['seconds'] = round(time.perf_counter() - timer, 4)
             rows.append(row)
         report['retrieval'] = summarize(rows)
+        report['cutoff_comparison'] = compare_cutoffs(rows, dataset['cases'], sorted({min(3, TOP_K), TOP_K}))
+        report['cutoff_comparison_method'] = 'Prefix evaluation of the same ranked chunks; not separate searches or generation runs.'
         report['summary'] = (f"Found a relevant page for {report['retrieval']['questions_with_relevant_page']} "
                              f"of {len(rows)} questions ({report['retrieval']['retrieval_success_percent']}%).")
         report['by_company'] = {c: summarize([r for r in rows if r['company'] == c]) for c in sorted({r['company'] for r in rows})}
@@ -168,7 +221,7 @@ def main():
         report['error'] = f'{type(error).__name__}: {error}'
     finally:
         if args.rewrite_mode == 'model':
-            from src.inference import stop_inference
+            from inference import stop_inference
             stop_inference()
         report['total_seconds_including_setup'] = round(time.perf_counter() - started, 2)
         OUTPUT.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')

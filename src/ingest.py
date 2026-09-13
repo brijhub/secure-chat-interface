@@ -8,17 +8,13 @@ import chromadb
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer
 
-if __package__:
-    from .config import (CHROMA_PATH, CHUNK_OVERLAP, CHUNK_SIZE, COLLECTION_NAME,
-                         DATA_PATH, EMBEDDING_BATCH_SIZE, EMBEDDING_MODEL)
-else:
-    from config import (CHROMA_PATH, CHUNK_OVERLAP, CHUNK_SIZE, COLLECTION_NAME,
-                        DATA_PATH, EMBEDDING_BATCH_SIZE, EMBEDDING_MODEL)
+from config import (CHROMA_PATH, CHUNK_OVERLAP, CHUNK_SIZE, COLLECTION_NAME,
+                    DATA_PATH, EMBEDDING_BATCH_SIZE, EMBEDDING_MODEL)
 
 
 def ensure_index():
+    """Reuse a nonempty index with the configured model; otherwise rebuild."""
     CHROMA_PATH.mkdir(parents=True, exist_ok=True)
-    """Build on first startup; reuse a compatible, nonempty persisted index."""
     client = chromadb.PersistentClient(path=str(CHROMA_PATH))
     if COLLECTION_NAME in [collection.name for collection in client.list_collections()]:
         collection = client.get_collection(COLLECTION_NAME, embedding_function=None)
@@ -75,7 +71,6 @@ def build_chunks(data_path: Path = DATA_PATH) -> list[dict]:
     if not pdf_paths:
         raise FileNotFoundError(f"No PDFs found in {data_path}")
 
-    # Downloads only tokenizer files and caches them automatically.
     tokenizer = AutoTokenizer.from_pretrained(EMBEDDING_MODEL, use_fast=True)
     chunks = []
     for pdf_path in pdf_paths:

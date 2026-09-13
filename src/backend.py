@@ -1,4 +1,4 @@
-"""FastAPI backend. Run: python -m uvicorn src.backend:app"""
+"""FastAPI backend. Run: python -m uvicorn backend:app --app-dir src"""
 
 import logging
 from copy import deepcopy
@@ -8,20 +8,11 @@ from threading import Lock
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, ConfigDict, Field
 
-if __package__:
-    from .config import MAX_HISTORY_MESSAGES, USER_ACCESS
-    from .history import init_history, load_history, append_messages, clear_history
-    from .rag import answer_question
-    from .rag import load_retriever
-    from .inference import start_inference, stop_inference
-    from .ingest import ensure_index
-else:
-    from config import MAX_HISTORY_MESSAGES, USER_ACCESS
-    from history import init_history, load_history, append_messages, clear_history
-    from rag import answer_question
-    from rag import load_retriever
-    from inference import start_inference, stop_inference
-    from ingest import ensure_index
+from config import MAX_HISTORY_MESSAGES, USER_ACCESS
+from history import init_history, load_history, append_messages, clear_history
+from rag import answer_question, load_retriever
+from inference import start_inference, stop_inference
+from ingest import ensure_index
 
 
 # Keep turns ordered within a conversation without blocking other users.
@@ -108,7 +99,7 @@ def chat(email: str, session_id: str, question: str) -> dict:
 
 
 def get_history(email: str, session_id: str) -> list[dict]:
-    """Return a copy so callers cannot change stored messages."""
+    """Load the full transcript for this conversation."""
     key = conversation_key(email, session_id)
     with get_conversation_lock(key):
         return load_history(*key)

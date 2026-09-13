@@ -4,6 +4,7 @@ sentence-transformers
 torch
 chromadb
 fastapi
+pydantic>=2,<3
 uvicorn
 streamlit
 requests

@@ -1,13 +1,10 @@
-"""Small SQLite conversation store; no additional dependencies or service."""
+"""SQLite storage for per-user conversation history."""
 
 import json
 import sqlite3
 from contextlib import closing
 
-if __package__:
-    from .config import HISTORY_DB_PATH
-else:
-    from config import HISTORY_DB_PATH
+from config import HISTORY_DB_PATH
 
 
 def init_history():

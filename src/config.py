@@ -27,7 +27,6 @@ COMPANY_ALIASES = {
 }
 COMPANY_FUZZY_THRESHOLD = 0.85  # Spelling similarity, not semantic confidence.
 
-# Small instruction-tuned model for local CPU inference.
 LLM_MODEL = "Qwen/Qwen2.5-0.5B-Instruct"
 LLM_MAX_INPUT_TOKENS = 4096
 LLM_MAX_NEW_TOKENS = 256
