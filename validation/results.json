@@ -1,9 +1,9 @@
 {
-  "created_at": "2026-09-12T19:55:51.711064+00:00",
-  "status": "error",
+  "created_at": "2026-09-13T06:01:29.009952+00:00",
+  "status": "completed",
   "test_type": "Document retrieval and explicit company-access checks",
   "rewrite_mode": "gold",
-  "dataset_sha256": "835598f024e24ac293d3966166108e353209236163539a027101be4149354868",
+  "dataset_sha256": "fa3c5f5d67ca7ec5e4e1063e26f7254f8fa7781730091893cf4a7fea5ead2679",
   "current_user_access": {
     "alice@email.com": [
       "meta"
@@ -14,7 +14,6 @@
     ],
     "charlie@email.com": [
       "tcs",
-      "wipro",
       "amazon"
     ]
   },
@@ -26,29 +25,2027 @@
     "Page labels are curated, not exhaustive. This is a development dataset.",
     "Access checks test explicit company requests, not all possible attempts to bypass permissions."
   ],
-  "permission_warnings": [
-    "amazon-01: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-02: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-03: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-04: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-05: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-06: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-07: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-08: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-09: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-10: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-11: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-12: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-13: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-14: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-15: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-16: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-17: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-18: current permissions for alice@email.com differ from the dataset's expected access.",
-    "amazon-19: current permissions for alice@email.com differ from the dataset's expected access.",
-    "meta-20: current permissions for alice@email.com differ from the dataset's expected access."
+  "permission_warnings": [],
+  "dataset_questions": 80,
+  "retrieval": {
+    "questions_tested": 68,
+    "questions_with_relevant_page": 64,
+    "retrieval_success_percent": 94.12,
+    "first_result_correct_percent": 69.12,
+    "errors": 0,
+    "average_search_seconds": 0.057
+  },
+  "summary": "Found a relevant page for 64 of 68 questions (94.12%).",
+  "by_company": {
+    "amazon": {
+      "questions_tested": 17,
+      "questions_with_relevant_page": 15,
+      "retrieval_success_percent": 88.24,
+      "first_result_correct_percent": 76.47,
+      "errors": 0,
+      "average_search_seconds": 0.062
+    },
+    "google": {
+      "questions_tested": 17,
+      "questions_with_relevant_page": 16,
+      "retrieval_success_percent": 94.12,
+      "first_result_correct_percent": 41.18,
+      "errors": 0,
+      "average_search_seconds": 0.055
+    },
+    "meta": {
+      "questions_tested": 17,
+      "questions_with_relevant_page": 16,
+      "retrieval_success_percent": 94.12,
+      "first_result_correct_percent": 76.47,
+      "errors": 0,
+      "average_search_seconds": 0.055
+    },
+    "tcs": {
+      "questions_tested": 17,
+      "questions_with_relevant_page": 17,
+      "retrieval_success_percent": 100.0,
+      "first_result_correct_percent": 82.35,
+      "errors": 0,
+      "average_search_seconds": 0.057
+    }
+  },
+  "by_difficulty": {
+    "easy": {
+      "questions_tested": 40,
+      "questions_with_relevant_page": 38,
+      "retrieval_success_percent": 95.0,
+      "first_result_correct_percent": 70.0,
+      "errors": 0,
+      "average_search_seconds": 0.055
+    },
+    "medium": {
+      "questions_tested": 20,
+      "questions_with_relevant_page": 18,
+      "retrieval_success_percent": 90.0,
+      "first_result_correct_percent": 65.0,
+      "errors": 0,
+      "average_search_seconds": 0.06
+    },
+    "hard": {
+      "questions_tested": 8,
+      "questions_with_relevant_page": 8,
+      "retrieval_success_percent": 100.0,
+      "first_result_correct_percent": 75.0,
+      "errors": 0,
+      "average_search_seconds": 0.061
+    }
+  },
+  "access_checks": {
+    "tested": 4,
+    "passed": 4,
+    "cases": [
+      {
+        "id": "amazon-20",
+        "question": "What were Amazon's net sales in Q1 2025?",
+        "passed": true,
+        "detail": "Unauthorized company request was blocked."
+      },
+      {
+        "id": "google-20",
+        "question": "What was Alphabet's consolidated revenue in Q1 2025, rounded to billions?",
+        "passed": true,
+        "detail": "Unauthorized company request was blocked."
+      },
+      {
+        "id": "meta-20",
+        "question": "What was Meta's revenue in Q1 2025 in millions?",
+        "passed": true,
+        "detail": "Unauthorized company request was blocked."
+      },
+      {
+        "id": "tcs-20",
+        "question": "What was TCS Q4 FY2026 revenue in rupees crore?",
+        "passed": true,
+        "detail": "Unauthorized company request was blocked."
+      }
+    ]
+  },
+  "not_scored": {
+    "unanswerable_questions": 8
+  },
+  "cases": [
+    {
+      "id": "amazon-01",
+      "company": "amazon",
+      "difficulty": "easy",
+      "question": "What were Amazon's net sales in Q1 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What were Amazon's net sales in Q1 2025?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 11
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 5
+        }
+      ],
+      "seconds": 0.0926
+    },
+    {
+      "id": "amazon-02",
+      "company": "amazon",
+      "difficulty": "easy",
+      "question": "What was Amazon's reported year-over-year net sales growth in Q1 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Amazon's reported year-over-year net sales growth in Q1 2025?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 11
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        }
+      ],
+      "seconds": 0.0581
+    },
+    {
+      "id": "amazon-03",
+      "company": "amazon",
+      "difficulty": "easy",
+      "question": "What were Amazon's North America segment sales in Q1 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What were Amazon's North America segment sales in Q1 2025?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 11
+        }
+      ],
+      "seconds": 0.0619
+    },
+    {
+      "id": "amazon-04",
+      "company": "amazon",
+      "difficulty": "easy",
+      "question": "What were Amazon's International segment sales in Q1 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What were Amazon's International segment sales in Q1 2025?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        }
+      ],
+      "seconds": 0.0544
+    },
+    {
+      "id": "amazon-05",
+      "company": "amazon",
+      "difficulty": "easy",
+      "question": "What were AWS sales in Q1 2025 according to Amazon?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What were AWS sales in Q1 2025 according to Amazon?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 5
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 4
+        }
+      ],
+      "seconds": 0.0558
+    },
+    {
+      "id": "amazon-06",
+      "company": "amazon",
+      "difficulty": "easy",
+      "question": "What was AWS year-over-year sales growth in Q1 2025 according to Amazon?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was AWS year-over-year sales growth in Q1 2025 according to Amazon?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 11
+        }
+      ],
+      "seconds": 0.0599
+    },
+    {
+      "id": "amazon-07",
+      "company": "amazon",
+      "difficulty": "easy",
+      "question": "What was Amazon's operating income in Q1 2025?",
+      "found_relevant_page": false,
+      "first_result_correct": false,
+      "retrieval_query": "What was Amazon's operating income in Q1 2025?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 5
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        }
+      ],
+      "seconds": 0.0461
+    },
+    {
+      "id": "amazon-08",
+      "company": "amazon",
+      "difficulty": "easy",
+      "question": "What was Amazon's net income in Q1 2025?",
+      "found_relevant_page": false,
+      "first_result_correct": false,
+      "retrieval_query": "What was Amazon's net income in Q1 2025?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 5
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 6
+        }
+      ],
+      "seconds": 0.0474
+    },
+    {
+      "id": "amazon-09",
+      "company": "amazon",
+      "difficulty": "easy",
+      "question": "What was Amazon's diluted earnings per share in Q1 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "What was Amazon's diluted earnings per share in Q1 2025?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 5
+        }
+      ],
+      "seconds": 0.0627
+    },
+    {
+      "id": "amazon-10",
+      "company": "amazon",
+      "difficulty": "easy",
+      "question": "What was Amazon's trailing-twelve-month free cash flow ended March 31, 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "What was Amazon's trailing-twelve-month free cash flow ended March 31, 2025?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        }
+      ],
+      "seconds": 0.0655
+    },
+    {
+      "id": "amazon-11",
+      "company": "amazon",
+      "difficulty": "medium",
+      "question": "Using rounded highlights, how much did Amazon's net sales increase in Q1 2025 versus Q1 2024?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "Using rounded highlights, how much did Amazon's net sales increase in Q1 2025 versus Q1 2024?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 11
+        }
+      ],
+      "seconds": 0.0633
+    },
+    {
+      "id": "amazon-12",
+      "company": "amazon",
+      "difficulty": "medium",
+      "question": "How did currency movements affect Amazon's Q1 2025 net sales growth?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How did currency movements affect Amazon's Q1 2025 net sales growth?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 11
+        }
+      ],
+      "seconds": 0.0571
+    },
+    {
+      "id": "amazon-13",
+      "company": "amazon",
+      "difficulty": "medium",
+      "question": "Using rounded highlights, how much did Amazon's trailing-twelve-month free cash flow decline versus March 2024?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "Using rounded highlights, how much did Amazon's trailing-twelve-month free cash flow decline versus March 2024?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        }
+      ],
+      "seconds": 0.0654
+    },
+    {
+      "id": "amazon-14",
+      "company": "amazon",
+      "difficulty": "medium",
+      "question": "Which grew faster in Amazon's Q1 2025 results: AWS sales or North America sales, and by how many percentage points?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "Which grew faster in Amazon's Q1 2025 results: AWS sales or North America sales, and by how many percentage points?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 11
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        }
+      ],
+      "seconds": 0.0677
+    },
+    {
+      "id": "amazon-15",
+      "company": "amazon",
+      "difficulty": "medium",
+      "question": "What net sales range did Amazon forecast for Q2 2025, and was it actual revenue?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What net sales range did Amazon forecast for Q2 2025, and was it actual revenue?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 7
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 11
+        }
+      ],
+      "seconds": 0.0577
+    },
+    {
+      "id": "amazon-16",
+      "company": "amazon",
+      "difficulty": "hard",
+      "question": "How much higher was it than in the same quarter last year?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "Using rounded highlights, how much did Amazon's net sales increase in Q1 2025 versus Q1 2024?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 11
+        }
+      ],
+      "seconds": 0.0769
+    },
+    {
+      "id": "amazon-17",
+      "company": "amazon",
+      "difficulty": "hard",
+      "question": "How much did it decline compared with the prior-year trailing period?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "Using rounded highlights, how much did Amazon's trailing-twelve-month free cash flow decline versus March 2024?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 3
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        }
+      ],
+      "seconds": 0.0672
+    },
+    {
+      "id": "google-01",
+      "company": "google",
+      "difficulty": "easy",
+      "question": "What was Alphabet's consolidated revenue in Q1 2025, rounded to billions?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "What was Alphabet's consolidated revenue in Q1 2025, rounded to billions?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 5
+        },
+        {
+          "source": "google.pdf",
+          "page": 6
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 2
+        }
+      ],
+      "seconds": 0.0527
+    },
+    {
+      "id": "google-02",
+      "company": "google",
+      "difficulty": "easy",
+      "question": "What was Alphabet's reported revenue growth in Q1 2025 year over year?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Alphabet's reported revenue growth in Q1 2025 year over year?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 5
+        },
+        {
+          "source": "google.pdf",
+          "page": 6
+        },
+        {
+          "source": "google.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0604
+    },
+    {
+      "id": "google-03",
+      "company": "google",
+      "difficulty": "easy",
+      "question": "What was Google Services revenue in Q1 2025, rounded to billions?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "What was Google Services revenue in Q1 2025, rounded to billions?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 7
+        }
+      ],
+      "seconds": 0.0596
+    },
+    {
+      "id": "google-04",
+      "company": "google",
+      "difficulty": "easy",
+      "question": "What was Google Cloud revenue in Q1 2025, rounded to billions?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Google Cloud revenue in Q1 2025, rounded to billions?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 2
+        },
+        {
+          "source": "google.pdf",
+          "page": 7
+        }
+      ],
+      "seconds": 0.0611
+    },
+    {
+      "id": "google-05",
+      "company": "google",
+      "difficulty": "easy",
+      "question": "What was Google Cloud revenue growth in Q1 2025 year over year?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Google Cloud revenue growth in Q1 2025 year over year?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 2
+        },
+        {
+          "source": "google.pdf",
+          "page": 7
+        }
+      ],
+      "seconds": 0.0545
+    },
+    {
+      "id": "google-06",
+      "company": "google",
+      "difficulty": "easy",
+      "question": "What was Alphabet's operating margin in Q1 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "What was Alphabet's operating margin in Q1 2025?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 4
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 4
+        },
+        {
+          "source": "google.pdf",
+          "page": 2
+        }
+      ],
+      "seconds": 0.0383
+    },
+    {
+      "id": "google-07",
+      "company": "google",
+      "difficulty": "easy",
+      "question": "What was Alphabet's diluted EPS in Q1 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "What was Alphabet's diluted EPS in Q1 2025?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 5
+        },
+        {
+          "source": "google.pdf",
+          "page": 2
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 6
+        }
+      ],
+      "seconds": 0.0552
+    },
+    {
+      "id": "google-08",
+      "company": "google",
+      "difficulty": "easy",
+      "question": "What quarterly dividend per share did Alphabet announce with Q1 2025 results?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "What quarterly dividend per share did Alphabet announce with Q1 2025 results?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 5
+        },
+        {
+          "source": "google.pdf",
+          "page": 6
+        }
+      ],
+      "seconds": 0.0572
+    },
+    {
+      "id": "google-09",
+      "company": "google",
+      "difficulty": "easy",
+      "question": "How many employees did Alphabet have at March 31, 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "How many employees did Alphabet have at March 31, 2025?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 2
+        },
+        {
+          "source": "google.pdf",
+          "page": 5
+        },
+        {
+          "source": "google.pdf",
+          "page": 6
+        }
+      ],
+      "seconds": 0.0409
+    },
+    {
+      "id": "google-10",
+      "company": "google",
+      "difficulty": "easy",
+      "question": "What was YouTube ads revenue in Alphabet's Q1 2025 supplemental table?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was YouTube ads revenue in Alphabet's Q1 2025 supplemental table?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 7
+        },
+        {
+          "source": "meta.pdf",
+          "page": 8
+        }
+      ],
+      "seconds": 0.0554
+    },
+    {
+      "id": "google-11",
+      "company": "google",
+      "difficulty": "medium",
+      "question": "Using Alphabet's Q1 2025 table, how much did revenue increase in millions versus Q1 2024?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "Using Alphabet's Q1 2025 table, how much did revenue increase in millions versus Q1 2024?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 5
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 9
+        },
+        {
+          "source": "google.pdf",
+          "page": 10
+        }
+      ],
+      "seconds": 0.0586
+    },
+    {
+      "id": "google-12",
+      "company": "google",
+      "difficulty": "medium",
+      "question": "How did Alphabet's Q1 2025 reported growth compare with constant-currency revenue growth?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "How did Alphabet's Q1 2025 reported growth compare with constant-currency revenue growth?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 9
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 10
+        }
+      ],
+      "seconds": 0.0621
+    },
+    {
+      "id": "google-13",
+      "company": "google",
+      "difficulty": "medium",
+      "question": "How much did Google Cloud operating income increase from Q1 2024 to Q1 2025, in millions?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How much did Google Cloud operating income increase from Q1 2024 to Q1 2025, in millions?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 7
+        },
+        {
+          "source": "meta.pdf",
+          "page": 8
+        }
+      ],
+      "seconds": 0.0509
+    },
+    {
+      "id": "google-14",
+      "company": "google",
+      "difficulty": "medium",
+      "question": "When was Alphabet's announced USD 0.21 dividend payable and what was its record date?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "When was Alphabet's announced USD 0.21 dividend payable and what was its record date?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        },
+        {
+          "source": "google.pdf",
+          "page": 6
+        },
+        {
+          "source": "google.pdf",
+          "page": 5
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "seconds": 0.0566
+    },
+    {
+      "id": "google-15",
+      "company": "google",
+      "difficulty": "medium",
+      "question": "How much of Alphabet's Q1 2025 other income and expense came from the stated unrealized equity gain?",
+      "found_relevant_page": false,
+      "first_result_correct": false,
+      "retrieval_query": "How much of Alphabet's Q1 2025 other income and expense came from the stated unrealized equity gain?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 5
+        },
+        {
+          "source": "google.pdf",
+          "page": 6
+        },
+        {
+          "source": "google.pdf",
+          "page": 8
+        },
+        {
+          "source": "google.pdf",
+          "page": 4
+        },
+        {
+          "source": "meta.pdf",
+          "page": 5
+        }
+      ],
+      "seconds": 0.0554
+    },
+    {
+      "id": "google-16",
+      "company": "google",
+      "difficulty": "hard",
+      "question": "How much higher was it than in the same quarter last year, in millions?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "Using Alphabet's Q1 2025 table, how much did revenue increase in millions versus Q1 2024?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 5
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 9
+        },
+        {
+          "source": "google.pdf",
+          "page": 10
+        }
+      ],
+      "seconds": 0.0531
+    },
+    {
+      "id": "google-17",
+      "company": "google",
+      "difficulty": "hard",
+      "question": "How much did it increase from the same quarter last year, in millions?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How much did Google Cloud operating income increase from Q1 2024 to Q1 2025, in millions?",
+      "retrieved_pages": [
+        {
+          "source": "google.pdf",
+          "page": 2
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 7
+        },
+        {
+          "source": "meta.pdf",
+          "page": 8
+        }
+      ],
+      "seconds": 0.0604
+    },
+    {
+      "id": "meta-01",
+      "company": "meta",
+      "difficulty": "easy",
+      "question": "What was Meta's revenue in Q1 2025 in millions?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Meta's revenue in Q1 2025 in millions?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 7
+        },
+        {
+          "source": "meta.pdf",
+          "page": 5
+        },
+        {
+          "source": "meta.pdf",
+          "page": 8
+        },
+        {
+          "source": "google.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0518
+    },
+    {
+      "id": "meta-02",
+      "company": "meta",
+      "difficulty": "easy",
+      "question": "What was Meta's revenue growth in Q1 2025 year over year?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Meta's revenue growth in Q1 2025 year over year?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 10
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0519
+    },
+    {
+      "id": "meta-03",
+      "company": "meta",
+      "difficulty": "easy",
+      "question": "What were Meta's costs and expenses in Q1 2025 in millions?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What were Meta's costs and expenses in Q1 2025 in millions?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 7
+        },
+        {
+          "source": "meta.pdf",
+          "page": 2
+        },
+        {
+          "source": "meta.pdf",
+          "page": 5
+        },
+        {
+          "source": "meta.pdf",
+          "page": 6
+        }
+      ],
+      "seconds": 0.052
+    },
+    {
+      "id": "meta-04",
+      "company": "meta",
+      "difficulty": "easy",
+      "question": "What was Meta's income from operations in Q1 2025 in millions?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Meta's income from operations in Q1 2025 in millions?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 7
+        },
+        {
+          "source": "meta.pdf",
+          "page": 5
+        },
+        {
+          "source": "meta.pdf",
+          "page": 8
+        },
+        {
+          "source": "google.pdf",
+          "page": 2
+        }
+      ],
+      "seconds": 0.055
+    },
+    {
+      "id": "meta-05",
+      "company": "meta",
+      "difficulty": "easy",
+      "question": "What was Meta's operating margin in Q1 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Meta's operating margin in Q1 2025?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 4
+        },
+        {
+          "source": "meta.pdf",
+          "page": 7
+        },
+        {
+          "source": "meta.pdf",
+          "page": 3
+        }
+      ],
+      "seconds": 0.0443
+    },
+    {
+      "id": "meta-06",
+      "company": "meta",
+      "difficulty": "easy",
+      "question": "What was Meta's net income in Q1 2025 in millions?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Meta's net income in Q1 2025 in millions?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 5
+        },
+        {
+          "source": "meta.pdf",
+          "page": 7
+        },
+        {
+          "source": "meta.pdf",
+          "page": 8
+        },
+        {
+          "source": "google.pdf",
+          "page": 8
+        }
+      ],
+      "seconds": 0.0576
+    },
+    {
+      "id": "meta-07",
+      "company": "meta",
+      "difficulty": "easy",
+      "question": "What was Meta's diluted EPS in Q1 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Meta's diluted EPS in Q1 2025?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 4
+        },
+        {
+          "source": "meta.pdf",
+          "page": 3
+        },
+        {
+          "source": "meta.pdf",
+          "page": 5
+        },
+        {
+          "source": "meta.pdf",
+          "page": 7
+        }
+      ],
+      "seconds": 0.0553
+    },
+    {
+      "id": "meta-08",
+      "company": "meta",
+      "difficulty": "easy",
+      "question": "What was Meta's average Family daily active people count in March 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Meta's average Family daily active people count in March 2025?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 8
+        },
+        {
+          "source": "meta.pdf",
+          "page": 5
+        },
+        {
+          "source": "meta.pdf",
+          "page": 3
+        }
+      ],
+      "seconds": 0.0523
+    },
+    {
+      "id": "meta-09",
+      "company": "meta",
+      "difficulty": "easy",
+      "question": "What were Meta's Q1 2025 capital expenditures including principal payments on finance leases?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "What were Meta's Q1 2025 capital expenditures including principal payments on finance leases?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 2
+        },
+        {
+          "source": "meta.pdf",
+          "page": 7
+        },
+        {
+          "source": "meta.pdf",
+          "page": 6
+        },
+        {
+          "source": "meta.pdf",
+          "page": 1
+        }
+      ],
+      "seconds": 0.0594
+    },
+    {
+      "id": "meta-10",
+      "company": "meta",
+      "difficulty": "easy",
+      "question": "What was Meta's headcount at March 31, 2025?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was Meta's headcount at March 31, 2025?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 3
+        },
+        {
+          "source": "meta.pdf",
+          "page": 7
+        },
+        {
+          "source": "google.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0477
+    },
+    {
+      "id": "meta-11",
+      "company": "meta",
+      "difficulty": "medium",
+      "question": "How much did Meta's revenue increase in Q1 2025 compared with Q1 2024, in millions?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How much did Meta's revenue increase in Q1 2025 compared with Q1 2024, in millions?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 10
+        },
+        {
+          "source": "google.pdf",
+          "page": 9
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "seconds": 0.0621
+    },
+    {
+      "id": "meta-12",
+      "company": "meta",
+      "difficulty": "medium",
+      "question": "How much did Meta's operating margin improve in Q1 2025 versus Q1 2024?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How much did Meta's operating margin improve in Q1 2025 versus Q1 2024?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 4
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 3
+        },
+        {
+          "source": "google.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0557
+    },
+    {
+      "id": "meta-13",
+      "company": "meta",
+      "difficulty": "medium",
+      "question": "How did Meta's Q1 2025 ad-impression growth compare with average price-per-ad growth?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How did Meta's Q1 2025 ad-impression growth compare with average price-per-ad growth?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 5
+        },
+        {
+          "source": "meta.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0509
+    },
+    {
+      "id": "meta-14",
+      "company": "meta",
+      "difficulty": "medium",
+      "question": "What range did Meta forecast for Q2 2025 revenue, and was it an actual result?",
+      "found_relevant_page": false,
+      "first_result_correct": false,
+      "retrieval_query": "What range did Meta forecast for Q2 2025 revenue, and was it an actual result?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 4
+        },
+        {
+          "source": "google.pdf",
+          "page": 10
+        },
+        {
+          "source": "google.pdf",
+          "page": 9
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "seconds": 0.0522
+    },
+    {
+      "id": "meta-15",
+      "company": "meta",
+      "difficulty": "medium",
+      "question": "How did Meta revise its full-year 2025 capital expenditure guidance?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "How did Meta revise its full-year 2025 capital expenditure guidance?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 2
+        },
+        {
+          "source": "meta.pdf",
+          "page": 7
+        },
+        {
+          "source": "meta.pdf",
+          "page": 6
+        }
+      ],
+      "seconds": 0.0732
+    },
+    {
+      "id": "meta-16",
+      "company": "meta",
+      "difficulty": "hard",
+      "question": "How much higher was it than in the same quarter last year, in millions?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How much did Meta's revenue increase in Q1 2025 compared with Q1 2024, in millions?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "google.pdf",
+          "page": 10
+        },
+        {
+          "source": "google.pdf",
+          "page": 9
+        },
+        {
+          "source": "google.pdf",
+          "page": 1
+        }
+      ],
+      "seconds": 0.0604
+    },
+    {
+      "id": "meta-17",
+      "company": "meta",
+      "difficulty": "hard",
+      "question": "How was that guidance revised from the previous range?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "How did Meta revise its full-year 2025 capital expenditure guidance?",
+      "retrieved_pages": [
+        {
+          "source": "meta.pdf",
+          "page": 1
+        },
+        {
+          "source": "meta.pdf",
+          "page": 2
+        },
+        {
+          "source": "meta.pdf",
+          "page": 7
+        },
+        {
+          "source": "meta.pdf",
+          "page": 6
+        }
+      ],
+      "seconds": 0.0528
+    },
+    {
+      "id": "tcs-01",
+      "company": "tcs",
+      "difficulty": "easy",
+      "question": "What was TCS Q4 FY2026 revenue in rupees crore?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was TCS Q4 FY2026 revenue in rupees crore?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 13
+        }
+      ],
+      "seconds": 0.0577
+    },
+    {
+      "id": "tcs-02",
+      "company": "tcs",
+      "difficulty": "easy",
+      "question": "What was TCS full-year FY2026 revenue in rupees crore?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was TCS full-year FY2026 revenue in rupees crore?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 13
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 11
+        }
+      ],
+      "seconds": 0.0638
+    },
+    {
+      "id": "tcs-03",
+      "company": "tcs",
+      "difficulty": "easy",
+      "question": "What was TCS reported sequential revenue growth in Q4 FY2026?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was TCS reported sequential revenue growth in Q4 FY2026?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0615
+    },
+    {
+      "id": "tcs-04",
+      "company": "tcs",
+      "difficulty": "easy",
+      "question": "What was TCS constant-currency sequential revenue growth in Q4 FY2026?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was TCS constant-currency sequential revenue growth in Q4 FY2026?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        }
+      ],
+      "seconds": 0.0617
+    },
+    {
+      "id": "tcs-05",
+      "company": "tcs",
+      "difficulty": "easy",
+      "question": "What was TCS FY2026 operating margin excluding one-offs?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was TCS FY2026 operating margin excluding one-offs?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0516
+    },
+    {
+      "id": "tcs-06",
+      "company": "tcs",
+      "difficulty": "easy",
+      "question": "What was TCS FY2026 net margin excluding one-offs?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was TCS FY2026 net margin excluding one-offs?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0491
+    },
+    {
+      "id": "tcs-07",
+      "company": "tcs",
+      "difficulty": "easy",
+      "question": "What was TCS total contract value for FY2026?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was TCS total contract value for FY2026?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 8
+        }
+      ],
+      "seconds": 0.0411
+    },
+    {
+      "id": "tcs-08",
+      "company": "tcs",
+      "difficulty": "easy",
+      "question": "What was TCS total contract value for Q4 FY2026?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What was TCS total contract value for Q4 FY2026?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 4
+        }
+      ],
+      "seconds": 0.0542
+    },
+    {
+      "id": "tcs-09",
+      "company": "tcs",
+      "difficulty": "easy",
+      "question": "What employee headcount did TCS report in its FY2026 annual highlights?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "What employee headcount did TCS report in its FY2026 annual highlights?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 1
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 15
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 10
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.052
+    },
+    {
+      "id": "tcs-10",
+      "company": "tcs",
+      "difficulty": "easy",
+      "question": "What final dividend per share did TCS propose with FY2026 results?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "What final dividend per share did TCS propose with FY2026 results?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 1
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0572
+    },
+    {
+      "id": "tcs-11",
+      "company": "tcs",
+      "difficulty": "medium",
+      "question": "How did TCS Q4 FY2026 reported sequential revenue growth compare with constant-currency growth?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How did TCS Q4 FY2026 reported sequential revenue growth compare with constant-currency growth?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 4
+        }
+      ],
+      "seconds": 0.0692
+    },
+    {
+      "id": "tcs-12",
+      "company": "tcs",
+      "difficulty": "medium",
+      "question": "How did TCS FY2026 reported annual revenue growth compare with constant-currency growth?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "How did TCS FY2026 reported annual revenue growth compare with constant-currency growth?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 1
+        }
+      ],
+      "seconds": 0.0533
+    },
+    {
+      "id": "tcs-13",
+      "company": "tcs",
+      "difficulty": "medium",
+      "question": "How did TCS Q4 FY2026 operating margin compare with full-year FY2026 operating margin, excluding one-offs?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How did TCS Q4 FY2026 operating margin compare with full-year FY2026 operating margin, excluding one-offs?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0699
+    },
+    {
+      "id": "tcs-14",
+      "company": "tcs",
+      "difficulty": "medium",
+      "question": "How many mega deals did TCS report for Q4 and full-year FY2026?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How many mega deals did TCS report for Q4 and full-year FY2026?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 1
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0573
+    },
+    {
+      "id": "tcs-15",
+      "company": "tcs",
+      "difficulty": "medium",
+      "question": "What percentage of net income did TCS Q4 FY2026 operating cash flow represent?",
+      "found_relevant_page": true,
+      "first_result_correct": false,
+      "retrieval_query": "What percentage of net income did TCS Q4 FY2026 operating cash flow represent?",
+      "retrieved_pages": [
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 4
+        }
+      ],
+      "seconds": 0.0591
+    },
+    {
+      "id": "tcs-16",
+      "company": "tcs",
+      "difficulty": "hard",
+      "question": "How does that compare with growth in constant currency?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How did TCS Q4 FY2026 reported sequential revenue growth compare with constant-currency growth?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 10
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 4
+        }
+      ],
+      "seconds": 0.0587
+    },
+    {
+      "id": "tcs-17",
+      "company": "tcs",
+      "difficulty": "hard",
+      "question": "How does that compare with the full-year margin on the same basis?",
+      "found_relevant_page": true,
+      "first_result_correct": true,
+      "retrieval_query": "How did TCS Q4 FY2026 operating margin compare with full-year FY2026 operating margin, excluding one-offs?",
+      "retrieved_pages": [
+        {
+          "source": "tcs.pdf",
+          "page": 2
+        },
+        {
+          "source": "tcs.pdf",
+          "page": 4
+        },
+        {
+          "source": "amazon.pdf",
+          "page": 9
+        }
+      ],
+      "seconds": 0.0597
+    }
   ],
-  "dataset_questions": 100,
-  "error": "SSLError: [X509: NO_CERTIFICATE_OR_CRL_FOUND] no certificate or crl found (_ssl.c:4358)",
-  "total_seconds_including_setup": 13.43
+  "total_seconds_including_setup": 47.89
 }

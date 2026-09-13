@@ -1,4 +1,4 @@
-﻿# Secure Chat Interface
+# Secure Chat Interface
 
 Chat with company PDFs using simulated user access, cited answers, and saved conversations. Runs locally on CPU; no API key required.
 
@@ -45,7 +45,7 @@ Open http://localhost:8501 and select a user:
 | --- | --- |
 | alice@email.com | Meta |
 | bob@email.com | Meta, Google |
-| charlie@email.com | TCS, Wipro, Amazon |
+| charlie@email.com | TCS, Amazon |
 
 Try: **What was Meta's revenue in Q1 2025?** Then: **How did it compare with last year?**
 
@@ -58,3 +58,5 @@ Use separate tabs for simultaneous users. Chats survive logout and restarts; **R
 ```
 
 Uses `validation/validation_data.json` and writes `validation/results.json`: retrieval success, timings, and access checks—not LLM answer accuracy.
+
+Validation covers 80 cases across the four supplied company PDFs.

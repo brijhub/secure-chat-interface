@@ -14,7 +14,7 @@ HISTORY_DB_PATH = STORAGE_PATH / "chat_history.sqlite3"
 USER_ACCESS = {
     "alice@email.com": ["meta"],
     "bob@email.com": ["meta", "google"],
-    "charlie@email.com": ["tcs", "wipro","amazon"],
+    "charlie@email.com": ["tcs", "amazon"],
 }
 
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"

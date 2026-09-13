@@ -26,10 +26,10 @@ def check_dataset():
     assert fingerprint["embedding_model"] == EMBEDDING_MODEL
     assert fingerprint["chunk_size"] == CHUNK_SIZE
     assert fingerprint["chunk_overlap"] == CHUNK_OVERLAP
-    assert len(cases) == 100
-    assert len({c["id"] for c in cases}) == 100
-    assert len({c["session_id"] for c in cases}) == 100
-    companies = {company for allowed in USER_ACCESS.values() for company in allowed}
+    companies = set(fingerprint["pdf_sha256"])
+    assert len(cases) == 20 * len(companies)
+    assert len({c["id"] for c in cases}) == len(cases)
+    assert len({c["session_id"] for c in cases}) == len(cases)
     assert {c["company"] for c in cases} == companies
     page_text = {}
     for company in sorted(companies):
@@ -65,9 +65,9 @@ def check_dataset():
             page = page_text[(evidence["source"], evidence["page"])]
             assert evidence["anchor"] in page, (label, evidence["anchor"])
             assert evidence["excerpt"] in page, label
-    print("PASS: 100 cases; each company has 10 easy, 5 medium, 5 hard.")
+    print(f"PASS: {len(cases)} cases; each company has 10 easy, 5 medium, 5 hard.")
     print("PASS: PDF hashes, evidence excerpts/pages and follow-up structure.")
-    print("85 answerable/follow-up cases; 10 unanswerable; 5 denied.")
+    print("Case counts:", dict(Counter(case["kind"] for case in cases)))
     print("These checks do not measure retrieval or answer accuracy.")
     if permission_warnings:
         print(f"WARNING: {len(permission_warnings)} cases have permissions inconsistent with current config.")
@@ -161,7 +161,7 @@ def main():
         report['by_company'] = {c: summarize([r for r in rows if r['company'] == c]) for c in sorted({r['company'] for r in rows})}
         report['by_difficulty'] = {d: summarize([r for r in rows if r['difficulty'] == d]) for d in ('easy', 'medium', 'hard')}
         report['access_checks'] = {'tested': len(access), 'passed': sum(r['passed'] for r in access), 'cases': access}
-        report['not_scored'] = {'unanswerable_questions': Counter(c['kind'] for c in dataset['cases'])['unanswerable']}
+        report['not_scored'] = {'unanswerable_questions': sum(c['kind'] == 'unanswerable' for c in dataset['cases'])}
         report['cases'] = rows
         report['status'] = ('completed_with_issues' if report['permission_warnings'] or report['retrieval']['errors'] or not all(r['passed'] for r in access) else 'completed')
     except Exception as error:

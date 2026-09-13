@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "description": "100 author-labelled development validation cases: 20 per company, 10 easy / 5 medium / 5 hard. No model outputs were used as answer labels.",
+  "description": "80 author-labelled development validation cases: 20 per company, 10 easy / 5 medium / 5 hard. No model outputs were used as answer labels.",
   "label_unit": "source_pdf_and_1_based_page",
   "label_policy": "Reference pages are curated evidence pages, not exhaustive relevance judgments over every page. Compute page metrics after deduplicating source/page pairs in retrieval rank order. Report recall as recall against these labelled pages; review alternate supporting pages before treating them as false positives. Anchor chunk IDs are provenance aids, not exhaustive relevant-chunk labels.",
   "difficulty_definitions": {
@@ -23,10 +23,9 @@
       "amazon": "a7ebe98065b56a4f484aa5f7034fe49b2bebdf349aaaaf704891121397dbd42d",
       "google": "0cb10728b1ba3854df33d0c11a8f398673551e5b5eb39183c2bf045efe96e2f4",
       "meta": "c8362114797683d22b5c0b5cb3471ca8e593079a7529c6ebc63a7efdbbd4ffae",
-      "tcs": "f9e58a92139b1a2ef2c53a8ed0887025aca9ee1df7d7443e3acab13b50c3190c",
-      "wipro": "f33c9866cfebc193e96544314e507673e801d3310c42b5db2ced507a94e2579c"
+      "tcs": "f9e58a92139b1a2ef2c53a8ed0887025aca9ee1df7d7443e3acab13b50c3190c"
     },
-    "chunk_count": 214
+    "chunk_count": 149
   },
   "cases": [
     {
@@ -34,7 +33,7 @@
       "company": "amazon",
       "difficulty": "easy",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-01",
       "question": "What were Amazon's net sales in Q1 2025?",
       "history": [],
@@ -67,7 +66,7 @@
       "company": "amazon",
       "difficulty": "easy",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-02",
       "question": "What was Amazon's reported year-over-year net sales growth in Q1 2025?",
       "history": [],
@@ -109,7 +108,7 @@
       "company": "amazon",
       "difficulty": "easy",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-03",
       "question": "What were Amazon's North America segment sales in Q1 2025?",
       "history": [],
@@ -142,7 +141,7 @@
       "company": "amazon",
       "difficulty": "easy",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-04",
       "question": "What were Amazon's International segment sales in Q1 2025?",
       "history": [],
@@ -175,7 +174,7 @@
       "company": "amazon",
       "difficulty": "easy",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-05",
       "question": "What were AWS sales in Q1 2025 according to Amazon?",
       "history": [],
@@ -209,7 +208,7 @@
       "company": "amazon",
       "difficulty": "easy",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-06",
       "question": "What was AWS year-over-year sales growth in Q1 2025 according to Amazon?",
       "history": [],
@@ -242,7 +241,7 @@
       "company": "amazon",
       "difficulty": "easy",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-07",
       "question": "What was Amazon's operating income in Q1 2025?",
       "history": [],
@@ -276,7 +275,7 @@
       "company": "amazon",
       "difficulty": "easy",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-08",
       "question": "What was Amazon's net income in Q1 2025?",
       "history": [],
@@ -309,7 +308,7 @@
       "company": "amazon",
       "difficulty": "easy",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-09",
       "question": "What was Amazon's diluted earnings per share in Q1 2025?",
       "history": [],
@@ -342,7 +341,7 @@
       "company": "amazon",
       "difficulty": "easy",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-10",
       "question": "What was Amazon's trailing-twelve-month free cash flow ended March 31, 2025?",
       "history": [],
@@ -376,7 +375,7 @@
       "company": "amazon",
       "difficulty": "medium",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-11",
       "question": "Using rounded highlights, how much did Amazon's net sales increase in Q1 2025 versus Q1 2024?",
       "history": [],
@@ -418,7 +417,7 @@
       "company": "amazon",
       "difficulty": "medium",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-12",
       "question": "How did currency movements affect Amazon's Q1 2025 net sales growth?",
       "history": [],
@@ -469,7 +468,7 @@
       "company": "amazon",
       "difficulty": "medium",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-13",
       "question": "Using rounded highlights, how much did Amazon's trailing-twelve-month free cash flow decline versus March 2024?",
       "history": [],
@@ -512,7 +511,7 @@
       "company": "amazon",
       "difficulty": "medium",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-14",
       "question": "Which grew faster in Amazon's Q1 2025 results: AWS sales or North America sales, and by how many percentage points?",
       "history": [],
@@ -554,7 +553,7 @@
       "company": "amazon",
       "difficulty": "medium",
       "kind": "answerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-15",
       "question": "What net sales range did Amazon forecast for Q2 2025, and was it actual revenue?",
       "history": [],
@@ -596,7 +595,7 @@
       "company": "amazon",
       "difficulty": "hard",
       "kind": "follow_up",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-16",
       "question": "How much higher was it than in the same quarter last year?",
       "history": [
@@ -648,7 +647,7 @@
       "company": "amazon",
       "difficulty": "hard",
       "kind": "follow_up",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-17",
       "question": "How much did it decline compared with the prior-year trailing period?",
       "history": [
@@ -701,7 +700,7 @@
       "company": "amazon",
       "difficulty": "hard",
       "kind": "unanswerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-18",
       "question": "What was Amazon revenue in Q1 2030?",
       "history": [],
@@ -719,7 +718,7 @@
       "company": "amazon",
       "difficulty": "hard",
       "kind": "unanswerable",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-amazon-19",
       "question": "What is the exact personal bank-account number of the Amazon CEO?",
       "history": [],
@@ -2132,7 +2131,7 @@
       "company": "meta",
       "difficulty": "hard",
       "kind": "denied",
-      "email": "alice@email.com",
+      "email": "charlie@email.com",
       "session_id": "validation-meta-20",
       "question": "What was Meta's revenue in Q1 2025 in millions?",
       "history": [],
@@ -2868,732 +2867,6 @@
       "email": "alice@email.com",
       "session_id": "validation-tcs-20",
       "question": "What was TCS Q4 FY2026 revenue in rupees crore?",
-      "history": [],
-      "expected_behavior": "denied",
-      "expected_answer": "Deny access before retrieval and return no sources or financial answer.",
-      "required_answer_checks": [
-        "Deny access before retrieval and return no sources or financial answer.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [],
-      "reference_evidence": []
-    },
-    {
-      "id": "wipro-01",
-      "company": "wipro",
-      "difficulty": "easy",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-01",
-      "question": "What was Wipro gross revenue for the quarter ended March 31, 2026, in INR billions?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "INR 242.4 billion.",
-      "required_answer_checks": [
-        "INR 242.4 billion.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "242.4",
-          "excerpt": "year ended March 31, 2026. Highlights of the Results Results for the Quarter ended March 31, 2026: 1. Gross revenue at ₹242.4 billion ($2,583.0 million1), an increase of 2.9% QoQ and 7.7% YoY. 2. IT services segment revenue was at $2,651.0 million, increase of 0.6% QoQ and 2.1% YoY. 3. Non-GAAP2 constant",
-          "anchor_chunk_ids": [
-            "wipro-p2-c2"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-02",
-      "company": "wipro",
-      "difficulty": "easy",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-02",
-      "question": "What was Wipro IT Services segment revenue for the quarter ended March 31, 2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "USD 2,651.0 million.",
-      "required_answer_checks": [
-        "USD 2,651.0 million.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "2,651.0",
-          "excerpt": "nue at ₹242.4 billion ($2,583.0 million1), an increase of 2.9% QoQ and 7.7% YoY. 2. IT services segment revenue was at $2,651.0 million, increase of 0.6% QoQ and 2.1% YoY. 3. Non-GAAP2 constant currency IT Services segment revenue increased 0.2% QoQ and decreased 0.2% YoY. 4. Total bookings3 was at $3,455 ",
-          "anchor_chunk_ids": [
-            "wipro-p2-c2"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-03",
-      "company": "wipro",
-      "difficulty": "easy",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-03",
-      "question": "What were Wipro total bookings for the quarter ended March 31, 2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "USD 3,455 million.",
-      "required_answer_checks": [
-        "USD 3,455 million.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "3,455",
-          "excerpt": "AP2 constant currency IT Services segment revenue increased 0.2% QoQ and decreased 0.2% YoY. 4. Total bookings3 was at $3,455 million, up by 3.2% QoQ in constant currency2. Large deal bookings4 was at $1,440 million, increase of 65.1% QoQ in constant currency2. 5. IT services operating margin5 for Q4’26 ",
-          "anchor_chunk_ids": [
-            "wipro-p2-c2"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-04",
-      "company": "wipro",
-      "difficulty": "easy",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-04",
-      "question": "What were Wipro large-deal bookings for the quarter ended March 31, 2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "USD 1,440 million.",
-      "required_answer_checks": [
-        "USD 1,440 million.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "1,440",
-          "excerpt": " 0.2% YoY. 4. Total bookings3 was at $3,455 million, up by 3.2% QoQ in constant currency2. Large deal bookings4 was at $1,440 million, increase of 65.1% QoQ in constant currency2. 5. IT services operating margin5 for Q4’26 was at 17.3%, decrease of 0.3% QoQ and 0.2% YoY. 6. Net income for the quarter was",
-          "anchor_chunk_ids": [
-            "wipro-p2-c2"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-05",
-      "company": "wipro",
-      "difficulty": "easy",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-05",
-      "question": "What was Wipro IT Services operating margin in Q4 FY2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "17.3%.",
-      "required_answer_checks": [
-        "17.3%.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "17.3%",
-          "excerpt": "djusted net income grew 3.7% QoQ in Q4’26 and grew 2.2% YoY for FY’26 FY’26 margin at 17.2%, expands 0.2%, Q4 margin at 17.3%, contracts 0.2% YoY Operating cash flow at 90.1% of net income for Q4’26 and 112.6% for FY’26 Board approves Buy-Back for the value of ₹150 billion EAST BRUNSWICK, N.J. | BANGALOR",
-          "anchor_chunk_ids": [
-            "wipro-p2-c1",
-            "wipro-p2-c2",
-            "wipro-p2-c3"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-06",
-      "company": "wipro",
-      "difficulty": "easy",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-06",
-      "question": "What was Wipro unadjusted net income for the quarter ended March 31, 2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "INR 35.0 billion.",
-      "required_answer_checks": [
-        "INR 35.0 billion.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "35.0",
-          "excerpt": "ices operating margin5 for Q4’26 was at 17.3%, decrease of 0.3% QoQ and 0.2% YoY. 6. Net income for the quarter was at ₹35.0 billion ($373.2 million1), an increase of 12.3% QoQ and decrease of 1.9% YoY. 7. Earnings per share for the quarter at ₹3.34 ($0.041), an increase of 12.1% QoQ and a decrease of 2",
-          "anchor_chunk_ids": [
-            "wipro-p2-c3"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-07",
-      "company": "wipro",
-      "difficulty": "easy",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-07",
-      "question": "What was Wipro unadjusted EPS for the quarter ended March 31, 2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "INR 3.34 per share.",
-      "required_answer_checks": [
-        "INR 3.34 per share.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "3.34",
-          "excerpt": "billion ($373.2 million1), an increase of 12.3% QoQ and decrease of 1.9% YoY. 7. Earnings per share for the quarter at ₹3.34 ($0.041), an increase of 12.1% QoQ and a decrease of 2.1% YoY. 8. Adjusted for impact of labour code changes6, Net Income for the quarter was ₹34.9 billion ($371.5 million1), an i",
-          "anchor_chunk_ids": [
-            "wipro-p2-c3"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-08",
-      "company": "wipro",
-      "difficulty": "easy",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-08",
-      "question": "What was Wipro operating cash flow for the quarter ended March 31, 2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "INR 31.7 billion.",
-      "required_answer_checks": [
-        "INR 31.7 billion.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "31.7",
-          "excerpt": " an increase of 3.7% QoQ and EPS for the quarter was ₹3.33 ($0.041), increase of 3.7 % QoQ. 9. Operating cash flows of ₹31.7 billion ($338.2 million1), decrease of 15.3% YoY and at 90.1% of Net Income for the quarter. 10. Voluntary attrition was at 13.8% on a trailing 12-month basis. Results for the Yea",
-          "anchor_chunk_ids": [
-            "wipro-p2-c3",
-            "wipro-p2-c4"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-09",
-      "company": "wipro",
-      "difficulty": "easy",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-09",
-      "question": "What was Wipro trailing-twelve-month voluntary attrition in its March 2026 results?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "13.8%.",
-      "required_answer_checks": [
-        "13.8%.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "13.8%",
-          "excerpt": "ion ($338.2 million1), decrease of 15.3% YoY and at 90.1% of Net Income for the quarter. 10. Voluntary attrition was at 13.8% on a trailing 12-month basis. Results for the Year ended March 31, 2026: 1. Gross revenue reached ₹926.2 billion ($9.9 billion1), an increase of 4.0% YoY. 2. IT services segment r",
-          "anchor_chunk_ids": [
-            "wipro-p2-c4"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-10",
-      "company": "wipro",
-      "difficulty": "easy",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-10",
-      "question": "What was Wipro full-year gross revenue for the year ended March 31, 2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "INR 926.2 billion.",
-      "required_answer_checks": [
-        "INR 926.2 billion.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "926.2",
-          "excerpt": "trition was at 13.8% on a trailing 12-month basis. Results for the Year ended March 31, 2026: 1. Gross revenue reached ₹926.2 billion ($9.9 billion1), an increase of 4.0% YoY. 2. IT services segment revenue was at $10,478.1 million, a decrease of 0.3% YoY. 3. Non-GAAP2 constant currency IT Services segme",
-          "anchor_chunk_ids": [
-            "wipro-p2-c4"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-11",
-      "company": "wipro",
-      "difficulty": "medium",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-11",
-      "question": "How did Wipro reported IT Services sequential revenue growth compare with constant-currency growth in Q4 FY2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "0.6% reported versus 0.2% constant currency; a 0.4-percentage-point gap.",
-      "required_answer_checks": [
-        "0.6% reported versus 0.2% constant currency; a 0.4-percentage-point gap.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "0.6%",
-          "excerpt": ".0 million1), an increase of 2.9% QoQ and 7.7% YoY. 2. IT services segment revenue was at $2,651.0 million, increase of 0.6% QoQ and 2.1% YoY. 3. Non-GAAP2 constant currency IT Services segment revenue increased 0.2% QoQ and decreased 0.2% YoY. 4. Total bookings3 was at $3,455 million, up by 3.2% QoQ in",
-          "anchor_chunk_ids": [
-            "wipro-p2-c2"
-          ]
-        },
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "0.2%",
-          "excerpt": "ed March 31, 2026 Adjusted net income grew 3.7% QoQ in Q4’26 and grew 2.2% YoY for FY’26 FY’26 margin at 17.2%, expands 0.2%, Q4 margin at 17.3%, contracts 0.2% YoY Operating cash flow at 90.1% of net income for Q4’26 and 112.6% for FY’26 Board approves Buy-Back for the value of ₹150 billion EAST BRUNSW",
-          "anchor_chunk_ids": [
-            "wipro-p2-c1",
-            "wipro-p2-c2",
-            "wipro-p2-c3",
-            "wipro-p2-c5"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-12",
-      "company": "wipro",
-      "difficulty": "medium",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-12",
-      "question": "How did Wipro adjusted and unadjusted net income differ in Q4 FY2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "Unadjusted INR 35.0 billion versus labour-code-adjusted INR 34.9 billion; adjusted is 0.1 billion lower.",
-      "required_answer_checks": [
-        "Unadjusted INR 35.0 billion versus labour-code-adjusted INR 34.9 billion; adjusted is 0.1 billion lower.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "35.0",
-          "excerpt": "ices operating margin5 for Q4’26 was at 17.3%, decrease of 0.3% QoQ and 0.2% YoY. 6. Net income for the quarter was at ₹35.0 billion ($373.2 million1), an increase of 12.3% QoQ and decrease of 1.9% YoY. 7. Earnings per share for the quarter at ₹3.34 ($0.041), an increase of 12.1% QoQ and a decrease of 2",
-          "anchor_chunk_ids": [
-            "wipro-p2-c3"
-          ]
-        },
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "34.9",
-          "excerpt": "f 12.1% QoQ and a decrease of 2.1% YoY. 8. Adjusted for impact of labour code changes6, Net Income for the quarter was ₹34.9 billion ($371.5 million1), an increase of 3.7% QoQ and EPS for the quarter was ₹3.33 ($0.041), increase of 3.7 % QoQ. 9. Operating cash flows of ₹31.7 billion ($338.2 million1), d",
-          "anchor_chunk_ids": [
-            "wipro-p2-c3"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-13",
-      "company": "wipro",
-      "difficulty": "medium",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-13",
-      "question": "What IT Services revenue guidance did Wipro give for the quarter ending June 30, 2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "USD 2,597-2,651 million, implying minus 2.0% to 0% sequential growth in constant currency; guidance, not actuals.",
-      "required_answer_checks": [
-        "USD 2,597-2,651 million, implying minus 2.0% to 0% sequential growth in constant currency; guidance, not actuals.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 3
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 3,
-          "anchor": "2,597",
-          "excerpt": "ook for the Quarter ending June 30, 2026 We expect revenue from our IT Services business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the foll",
-          "anchor_chunk_ids": [
-            "wipro-p3-c1"
-          ]
-        },
-        {
-          "source": "wipro.pdf",
-          "page": 3,
-          "anchor": "2,651",
-          "excerpt": "r ending June 30, 2026 We expect revenue from our IT Services business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the following exchange rat",
-          "anchor_chunk_ids": [
-            "wipro-p3-c1"
-          ]
-        },
-        {
-          "source": "wipro.pdf",
-          "page": 3,
-          "anchor": "2.0%",
-          "excerpt": " business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the following exchange rates: GBP/USD at 1.34, Euro/USD at 1.17, AUD/USD at 0.70, USD/",
-          "anchor_chunk_ids": [
-            "wipro-p3-c1",
-            "wipro-p3-c2"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-14",
-      "company": "wipro",
-      "difficulty": "medium",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-14",
-      "question": "What were the maximum value and per-share price of Wipro's April 2026 buyback proposal?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "Maximum INR 150 billion at INR 250 per share, subject to shareholder approval.",
-      "required_answer_checks": [
-        "Maximum INR 150 billion at INR 250 per share, subject to shareholder approval.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 3
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 3,
-          "anchor": "150 billion",
-          "excerpt": "te basis by way of a tender offer at a price of ₹ 250 ($2.661) per equity share for an aggregate amount not exceeding ₹ 150 billion ($1.6 billion1) , in accordance with the provisions contained in the Securities and Exchange Board of India (Buy-back of Securities) Regulations, 2018 and the Companies Act, 2013 ",
-          "anchor_chunk_ids": [
-            "wipro-p3-c4"
-          ]
-        },
-        {
-          "source": "wipro.pdf",
-          "page": 3,
-          "anchor": "250",
-          "excerpt": "ionally, in our recently concluded board meeting, the Board of Directors announced buyback of ₹15,000 Cr at a price of ₹250, subject to shareholder approval.” Capital Allocation: The Board of Directors approved the buyback proposal, subject to the approval of shareholders through postal ballot, for pur",
-          "anchor_chunk_ids": [
-            "wipro-p3-c3",
-            "wipro-p3-c4"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-15",
-      "company": "wipro",
-      "difficulty": "medium",
-      "kind": "answerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-15",
-      "question": "How did Wipro operating cash flow as a percentage of net income compare between Q4 and FY2026?",
-      "history": [],
-      "expected_behavior": "answer",
-      "expected_answer": "90.1% in Q4 versus 112.6% for FY2026; annual ratio higher by 22.5 percentage points.",
-      "required_answer_checks": [
-        "90.1% in Q4 versus 112.6% for FY2026; annual ratio higher by 22.5 percentage points.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "90.1%",
-          "excerpt": "w 2.2% YoY for FY’26 FY’26 margin at 17.2%, expands 0.2%, Q4 margin at 17.3%, contracts 0.2% YoY Operating cash flow at 90.1% of net income for Q4’26 and 112.6% for FY’26 Board approves Buy-Back for the value of ₹150 billion EAST BRUNSWICK, N.J. | BANGALORE, India – April 16, 2026: Wipro Limited (NYSE: W",
-          "anchor_chunk_ids": [
-            "wipro-p2-c1",
-            "wipro-p2-c4"
-          ]
-        },
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "112.6%",
-          "excerpt": "at 17.2%, expands 0.2%, Q4 margin at 17.3%, contracts 0.2% YoY Operating cash flow at 90.1% of net income for Q4’26 and 112.6% for FY’26 Board approves Buy-Back for the value of ₹150 billion EAST BRUNSWICK, N.J. | BANGALORE, India – April 16, 2026: Wipro Limited (NYSE: WIT, BSE: 507685, NSE: WIPRO), a lea",
-          "anchor_chunk_ids": [
-            "wipro-p2-c1"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "wipro-16",
-      "company": "wipro",
-      "difficulty": "hard",
-      "kind": "follow_up",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-16",
-      "question": "How does that compare with the labour-code-adjusted figure?",
-      "history": [
-        {
-          "role": "user",
-          "content": "What was Wipro unadjusted net income for the quarter ended March 31, 2026?"
-        },
-        {
-          "role": "assistant",
-          "content": "INR 35.0 billion."
-        }
-      ],
-      "expected_behavior": "answer",
-      "expected_answer": "Unadjusted INR 35.0 billion versus labour-code-adjusted INR 34.9 billion; adjusted is 0.1 billion lower.",
-      "required_answer_checks": [
-        "Unadjusted INR 35.0 billion versus labour-code-adjusted INR 34.9 billion; adjusted is 0.1 billion lower.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 2
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "35.0",
-          "excerpt": "ices operating margin5 for Q4’26 was at 17.3%, decrease of 0.3% QoQ and 0.2% YoY. 6. Net income for the quarter was at ₹35.0 billion ($373.2 million1), an increase of 12.3% QoQ and decrease of 1.9% YoY. 7. Earnings per share for the quarter at ₹3.34 ($0.041), an increase of 12.1% QoQ and a decrease of 2",
-          "anchor_chunk_ids": [
-            "wipro-p2-c3"
-          ]
-        },
-        {
-          "source": "wipro.pdf",
-          "page": 2,
-          "anchor": "34.9",
-          "excerpt": "f 12.1% QoQ and a decrease of 2.1% YoY. 8. Adjusted for impact of labour code changes6, Net Income for the quarter was ₹34.9 billion ($371.5 million1), an increase of 3.7% QoQ and EPS for the quarter was ₹3.33 ($0.041), increase of 3.7 % QoQ. 9. Operating cash flows of ₹31.7 billion ($338.2 million1), d",
-          "anchor_chunk_ids": [
-            "wipro-p2-c3"
-          ]
-        }
-      ],
-      "expected_standalone_question": "How did Wipro adjusted and unadjusted net income differ in Q4 FY2026?"
-    },
-    {
-      "id": "wipro-17",
-      "company": "wipro",
-      "difficulty": "hard",
-      "kind": "follow_up",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-17",
-      "question": "What revenue range and constant-currency growth did it guide for the next quarter?",
-      "history": [
-        {
-          "role": "user",
-          "content": "What was Wipro IT Services segment revenue for the quarter ended March 31, 2026?"
-        },
-        {
-          "role": "assistant",
-          "content": "USD 2,651.0 million."
-        }
-      ],
-      "expected_behavior": "answer",
-      "expected_answer": "USD 2,597-2,651 million, implying minus 2.0% to 0% sequential growth in constant currency; guidance, not actuals.",
-      "required_answer_checks": [
-        "USD 2,597-2,651 million, implying minus 2.0% to 0% sequential growth in constant currency; guidance, not actuals.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [
-        {
-          "source": "wipro.pdf",
-          "page": 3
-        }
-      ],
-      "reference_evidence": [
-        {
-          "source": "wipro.pdf",
-          "page": 3,
-          "anchor": "2,597",
-          "excerpt": "ook for the Quarter ending June 30, 2026 We expect revenue from our IT Services business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the foll",
-          "anchor_chunk_ids": [
-            "wipro-p3-c1"
-          ]
-        },
-        {
-          "source": "wipro.pdf",
-          "page": 3,
-          "anchor": "2,651",
-          "excerpt": "r ending June 30, 2026 We expect revenue from our IT Services business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the following exchange rat",
-          "anchor_chunk_ids": [
-            "wipro-p3-c1"
-          ]
-        },
-        {
-          "source": "wipro.pdf",
-          "page": 3,
-          "anchor": "2.0%",
-          "excerpt": " business segment to be in the range of $2,597 million to $2,651 million*. This translates to sequential guidance of (-)2.0% to 0% in constant currency terms. *Outlook for the Quarter ending June 30, 2026, is based on the following exchange rates: GBP/USD at 1.34, Euro/USD at 1.17, AUD/USD at 0.70, USD/",
-          "anchor_chunk_ids": [
-            "wipro-p3-c1",
-            "wipro-p3-c2"
-          ]
-        }
-      ],
-      "expected_standalone_question": "What IT Services revenue guidance did Wipro give for the quarter ending June 30, 2026?"
-    },
-    {
-      "id": "wipro-18",
-      "company": "wipro",
-      "difficulty": "hard",
-      "kind": "unanswerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-18",
-      "question": "What was Wipro revenue in Q1 2030?",
-      "history": [],
-      "expected_behavior": "unanswerable",
-      "expected_answer": "State that the information is unavailable in the supplied documents; do not substitute another period.",
-      "required_answer_checks": [
-        "State that the information is unavailable in the supplied documents; do not substitute another period.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [],
-      "reference_evidence": []
-    },
-    {
-      "id": "wipro-19",
-      "company": "wipro",
-      "difficulty": "hard",
-      "kind": "unanswerable",
-      "email": "charlie@email.com",
-      "session_id": "validation-wipro-19",
-      "question": "What is the exact personal bank-account number of the Wipro CEO?",
-      "history": [],
-      "expected_behavior": "unanswerable",
-      "expected_answer": "State that the information is unavailable in the supplied documents; do not invent an account number.",
-      "required_answer_checks": [
-        "State that the information is unavailable in the supplied documents; do not invent an account number.",
-        "Preserve the requested company, period, units, and actual-versus-guidance distinction."
-      ],
-      "relevant_pages": [],
-      "reference_evidence": []
-    },
-    {
-      "id": "wipro-20",
-      "company": "wipro",
-      "difficulty": "hard",
-      "kind": "denied",
-      "email": "alice@email.com",
-      "session_id": "validation-wipro-20",
-      "question": "What was Wipro gross revenue for the quarter ended March 31, 2026, in INR billions?",
       "history": [],
       "expected_behavior": "denied",
       "expected_answer": "Deny access before retrieval and return no sources or financial answer.",
