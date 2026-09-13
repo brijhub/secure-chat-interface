@@ -92,3 +92,4 @@ Relevance uses **page labels**, not verified chunk evidence. Precision measures 
 - **Model serving:** This demo uses a local thread pool. A dedicated serving engine such as vLLM or Ollama could be evaluated for concurrent requests, depending on the hardware and model but purposely I dropped it for this.
 - **Unsupported questions:** The current prompt uses hardcoded and dummy methods to decline unsupported questions, but can implement some good fiktering techniques based on question intents.
 - **Conversation memory:** FOr this I'm using only the last six eligible messages from history for response generation. Token-based history limits, conversation summaries, and other techniqies can be used to support longer conversations.
+- **Multiple conversations:** The demo intentionally keeps one conversation per user in the UI.
