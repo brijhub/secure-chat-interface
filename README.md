@@ -87,7 +87,7 @@ Relevance uses **page labels**, not verified chunk evidence. Precision measures 
 - **FastAPI:** Provides backend API endpoints for chat, user access checks, and conversation history.
 - **Streamlit:** Provides the browser interface for selecting a user, asking questions, and viewing answers.
 
-## Limitations and future improvements
+## Limitations and further improvements
 
 - **Model serving:** This demo uses a local thread pool. A dedicated serving engine such as vLLM or Ollama could be evaluated for concurrent requests, depending on the hardware and model but purposely I dropped it for this.
 - **Unsupported questions:** The current prompt uses hardcoded and dummy methods to decline unsupported questions, but can implement some good fiktering techniques based on question intents.
